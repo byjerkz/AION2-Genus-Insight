@@ -1,54 +1,89 @@
-# Aion 2 · Species Perception helper (Sorcerer)
+<div align="center">
 
-**[English](#english) · [Français](#français)**
+# 🐾 AION 2 · Species Perception
 
----
+**Sorcerer helper for Species Perception · Outil Perception d'espèce pour Sorcier**
 
-## English
+[![Open the tool](https://img.shields.io/badge/▶_Open_the_tool-Ouvrir_l'outil-c8a76c?style=for-the-badge)](https://byjerkz.github.io/AION2-Species-Perception/)
 
-A free tool to optimise **Species Perception** (Genus Insight) in Aion 2, built for the Sorcerer. Covers the five families: Intellia, Bestia, Natura, Varius and Spéciaux.
+![Languages](https://img.shields.io/badge/🌍_FR_|_EN-bilingual-41c4c0?style=flat-square)
+![No install](https://img.shields.io/badge/💻_no_install-browser_only-243c44?style=flat-square)
+![Fan made](https://img.shields.io/badge/🎮_fan_made-not_affiliated_with_NCSOFT-555?style=flat-square)
 
-> The interface is in **French** for now, with stat names as shown in the French game client. An English version may come later.
+**[🇬🇧 English](#-english) · [🇫🇷 Français](#-français)**
 
-### What it does
-- Mirrors your 9 lines per family, like the in-game screen: stat, rarity, value, lock.
-- Gives each line a verdict: ✓ lock it, ≈ acceptable, ↻ reroll.
-- Uses the real in-game ranges (Unique minimum → Heroic maximum) to compute the minimum value worth locking.
-- Adjustable threshold: drag the marker on the gauge.
-- Real reroll cost by number of locks, split between species crystals and universal crystals.
-- Recommended settings for the auto-analysis screen.
-- Total of your bonuses across the five families.
-- A "CRIT at 50 %" switch for when you reach the game's crit-rate cap.
-
-### How to use it
-Open the page, pick a family and copy your lines from the game. Everything is saved in your browser only.
-To move to another PC or show your lines to a friend: **Sauvegarde et partage → Copier ma sauvegarde**, then **Importer** on the other side.
+</div>
 
 ---
 
-## Français
+## 🇬🇧 English
 
-Outil gratuit pour optimiser la **Perception d'espèce** d'Aion 2, pensé pour le Sorcier. Il couvre les 5 catégories : Intellia, Bestia, Natura, Varius et Spéciaux.
+A free tool to optimise **Species Perception** in Aion 2, built for the **Sorcerer**. It covers all five families: 🦉 Cogni · 🐺 Fera · 🌳 Natura · 🌀 Varian · ✨ Special.
 
-### Ce que fait l'outil
-- Recopie tes 9 lignes par catégorie, comme dans le jeu : stat, rareté, valeur, verrou.
-- Donne un verdict pour chaque ligne : ✓ verrouille, ≈ correct, ↻ relance.
-- Utilise les vraies fourchettes du jeu (min Unique → max Héroïque) pour calculer la valeur minimum à verrouiller.
-- Seuil d'exigence réglable : glisse le trait sur la jauge.
-- Prix réel d'une relance selon le nombre de verrous, avec le partage cristaux d'espèce / universels.
-- Réglage conseillé pour l'analyse automatique.
-- Total de tes bonus sur les 5 catégories.
-- Case « CRIT à 50 % » quand ton taux de CRIT atteint le plafond du jeu.
+### ✨ Features
 
-### Utilisation
-Ouvre la page, choisis une catégorie et recopie tes lignes. Tout est enregistré dans ton navigateur uniquement.
-Pour changer de PC ou partager tes stats : **Sauvegarde et partage → Copier ma sauvegarde**, puis **Importer** de l'autre côté.
+| | |
+|---|---|
+| 🧾 **In-game layout** | Your 9 lines per family, just like the game: stat, rarity colour, value, lock. |
+| ✅ **Instant verdict** | Every line gets ✓ lock it, ≈ fair or ↻ reroll. |
+| 📏 **Real ranges** | Minimum and maximum values recorded in game (Unique → Heroic). |
+| 🎚️ **Your own standard** | Drag the marker on the gauge to set how picky you want to be. |
+| 💰 **Reroll cost** | Real cost by number of locks, split between species and universal crystals. |
+| ⚙️ **Auto-analysis** | Which stats to tick, and the value worth keeping. |
+| 📊 **Bonus totals** | The sum of your bonuses across all five families. |
+| 🎯 **Crit cap switch** | Flip the priorities once your crit rate hits the 50 % cap. |
+| 💾 **Backup & share** | Copy a code to move to another PC or show your lines to a friend. |
+
+### 🚀 How to use it
+
+1. Open **[the tool](https://byjerkz.github.io/AION2-Species-Perception/)** and pick **EN** at the top right.
+2. Choose a family, then copy your lines from the game, one by one.
+3. Follow the **Family summary**: it tells you which slot to work on next.
+4. Save your lines now and then with **Backup and sharing → Copy my backup**.
+
+> 🔒 Your data stays in **your browser**. Nothing is sent anywhere.
+> 
+> ℹ️ English stat names come from the community guide and may differ slightly from the English game client.
 
 ---
 
-### Sources
-- Ranges and reroll costs recorded in game, November 2026 / Fourchettes et prix relevés en jeu, novembre 2026.
-- Priorities from a community Species Perception guide, adapted to the Sorcerer / Priorités d'après un guide communautaire, adaptées au Sorcier.
-- Stat effects from / Effets des stats d'après [wikily.gg](https://wikily.gg/fr/aion-2/stats).
+## 🇫🇷 Français
 
-Fan-made tool, not affiliated with NCSOFT. / Outil de fan, non affilié à NCSOFT.
+Outil gratuit pour optimiser la **Perception d'espèce** d'Aion 2, pensé pour le **Sorcier**. Il couvre les 5 catégories : 🦉 Intellia · 🐺 Bestia · 🌳 Natura · 🌀 Varius · ✨ Spéciaux.
+
+### ✨ Fonctionnalités
+
+| | |
+|---|---|
+| 🧾 **Comme en jeu** | Tes 9 lignes par catégorie, comme dans le jeu : stat, couleur de rareté, valeur, verrou. |
+| ✅ **Verdict immédiat** | Chaque ligne reçoit ✓ verrouille, ≈ correct ou ↻ relance. |
+| 📏 **Vraies fourchettes** | Valeurs minimum et maximum relevées en jeu (Unique → Héroïque). |
+| 🎚️ **Ton exigence** | Glisse le trait sur la jauge pour régler ton niveau d'exigence. |
+| 💰 **Prix des relances** | Coût réel selon le nombre de verrous, avec les cristaux d'espèce et universels. |
+| ⚙️ **Analyse automatique** | Les stats à cocher, et la valeur à garder. |
+| 📊 **Total des bonus** | La somme de tes bonus sur les 5 catégories. |
+| 🎯 **Plafond de CRIT** | Inverse les priorités quand ton taux de CRIT atteint 50 %. |
+| 💾 **Sauvegarde et partage** | Un code à copier pour changer de PC ou montrer tes lignes à un ami. |
+
+### 🚀 Utilisation
+
+1. Ouvre **[l'outil](https://byjerkz.github.io/AION2-Species-Perception/)** et choisis **FR** en haut à droite.
+2. Choisis une catégorie, puis recopie tes lignes depuis le jeu, une par une.
+3. Suis le **Bilan de la catégorie** : il t'indique l'emplacement à travailler ensuite.
+4. Sauvegarde tes lignes de temps en temps avec **Sauvegarde et partage → Copier ma sauvegarde**.
+
+> 🔒 Tes données restent dans **ton navigateur**. Rien n'est envoyé nulle part.
+
+---
+
+## 📚 Sources
+
+- 📐 Ranges and reroll costs recorded in game, November 2026 · Fourchettes et prix relevés en jeu, novembre 2026
+- 🗺️ Priorities from a community Species Perception guide, adapted to the Sorcerer · Priorités d'après un guide communautaire, adaptées au Sorcier
+- 📖 Stat effects · Effets des stats : [wikily.gg](https://wikily.gg/fr/aion-2/stats)
+
+<div align="center">
+
+🎮 *Fan-made tool, not affiliated with NCSOFT · Outil de fan, non affilié à NCSOFT*
+
+</div>

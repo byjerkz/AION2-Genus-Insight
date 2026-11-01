@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perception d'espèce Sorcier</title>
+<meta name="description" content="Aion 2 Species Perception helper for Sorcerer / Outil Perception d'espèce Aion 2 pour Sorcier.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
 <style>
@@ -159,96 +160,101 @@ details[open].panel summary::after{content:"−"}
 ul.rules{margin:12px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:7px}
 footer{color:var(--muted);font-size:12.5px;text-align:center}
 @media (prefers-reduced-motion:no-preference){.g-mark{transition:left .25s}}
+.hright{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--panel)}
+.lang button{background:none;border:0;color:var(--muted);font:700 12.5px var(--f-body);letter-spacing:.06em;padding:5px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--metal);color:#1a1408}
+@media (max-width:700px){.hright{align-items:flex-start}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div>
-      <h1>Perception <span>d'espèce</span></h1>
-      <p>Sorcier niveau 45 · ton écran en jeu, ligne par ligne, avec le verdict de chacune</p>
+      <h1 data-t="h1">Perception <span>d'espèce</span></h1>
+      <p data-t="tagline">Sorcier niveau 45 · ton écran en jeu, ligne par ligne, avec le verdict de chacune</p>
     </div>
-    <div class="legend" aria-label="Légende">
-      <span><i style="background:var(--r-h)"></i>Héroïque</span><span><i style="background:var(--r-u)"></i>Unique</span><span><i style="background:var(--r-e)"></i>Épique</span><span><i style="background:var(--r-r)"></i>Rare</span><span><i style="background:var(--r-g)"></i>Général</span>
-      <span>· <b class="c-ok">✓</b> verrouille <b class="c-mid">≈</b> correct <b class="c-no">↻</b> relance</span>
+    <div class="hright">
+      <div class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button></div>
+      <div class="legend" data-t="legend"><span><i style="background:var(--r-h)"></i>Héroïque</span><span><i style="background:var(--r-u)"></i>Unique</span><span><i style="background:var(--r-e)"></i>Épique</span><span><i style="background:var(--r-r)"></i>Rare</span><span><i style="background:var(--r-g)"></i>Général</span><span>· <b class="c-ok">✓</b> verrouille <b class="c-mid">≈</b> correct <b class="c-no">↻</b> relance</span></div>
     </div>
   </header>
 
-  <nav class="medals" role="tablist" id="tabs" aria-label="Catégories de familiers"></nav>
+  <nav class="medals" role="tablist" id="tabs" aria-label="Catégories"></nav>
 
   <div class="main">
     <section class="panel" aria-labelledby="chk-h">
-      <h2 id="chk-h">Saisir une ligne</h2>
-      <p class="lede">Recopie la ligne telle qu'elle apparaît en jeu. Le verdict s'affiche pendant que tu tapes.</p>
+      <h2 id="chk-h" data-t="chkH">Saisir une ligne</h2>
+      <p class="lede" data-t="chkLede">Recopie la ligne telle qu'elle apparaît en jeu. Le verdict s'affiche pendant que tu tapes.</p>
 
-      <div class="field"><span class="flabel">Emplacement</span><div class="slots-pick" id="slotPick"></div></div>
-      <div class="field"><label for="statSel">Stat</label><select id="statSel"></select></div>
+      <div class="field"><span class="flabel" data-t="fSlot">Emplacement</span><div class="slots-pick" id="slotPick"></div></div>
+      <div class="field"><label for="statSel" data-t="fStat">Stat</label><select id="statSel"></select></div>
       <div class="row2">
-        <div class="field"><span class="flabel">Couleur</span><div class="rar-pick" id="rarPick"></div></div>
-        <div class="field"><label for="valIn">Valeur</label><input type="text" id="valIn" inputmode="decimal" placeholder="11 ou 1,8" autocomplete="off"></div>
+        <div class="field"><span class="flabel" data-t="fColor">Couleur</span><div class="rar-pick" id="rarPick"></div></div>
+        <div class="field"><label for="valIn" data-t="fVal">Valeur</label><input type="text" id="valIn" inputmode="decimal" placeholder="11 / 1,8" autocomplete="off"></div>
       </div>
       <span class="hint" id="rangeHint"></span>
-      <label class="chk"><input type="checkbox" id="lkIn"> Verrouillée en jeu</label>
+      <label class="chk"><input type="checkbox" id="lkIn"> <span data-t="fLocked">Verrouillée en jeu</span></label>
 
       <div class="verdict" id="verdict" aria-live="polite"></div>
-      <div class="btnrow"><button class="btn" id="saveBtn" type="button"></button><button class="btn ghost" id="clearBtn" type="button">Vider la ligne</button></div>
+      <div class="btnrow"><button class="btn" id="saveBtn" type="button"></button><button class="btn ghost" id="clearBtn" type="button" data-t="clear">Vider la ligne</button></div>
       <div class="toast" id="toast"></div>
-      <div class="advice"><span class="flabel">Bilan de la catégorie</span><div id="advice"></div></div>
+      <div class="advice"><span class="flabel" data-t="advH">Bilan de la catégorie</span><div id="advice"></div></div>
     </section>
 
     <section class="panel" aria-labelledby="ep-h">
-      <div class="ep-head"><h2 id="ep-h"></h2><span class="lv">Niv. 10 (MAX)</span></div>
+      <div class="ep-head"><h2 id="ep-h"></h2><span class="lv" data-t="lvl">Niv. 10 (MAX)</span></div>
       <div class="ep-bar"></div>
-      <div class="ep-sub"><b>✦ Effet d'analyse</b><label class="cap" title="Coche si ton taux de CRIT affiché en jeu atteint 50 %, le maximum possible."><input type="checkbox" id="capIn"> CRIT à 50 % (plafond)</label><span id="epCount"></span></div>
+      <div class="ep-sub"><b data-t="epSub">✦ Effet d'analyse</b><label class="cap"><input type="checkbox" id="capIn"> <span data-t="cap">CRIT à 50 % (plafond)</span></label><span id="epCount"></span></div>
       <div class="lines" id="lines"></div>
       <div class="cost" id="cost"></div>
-      <p class="hint" style="margin:10px 0 0">Touche le cadenas pour indiquer si la ligne est verrouillée en jeu. Touche une ligne pour la modifier. Sous chaque ligne : la cible de l'emplacement et la valeur minimum à verrouiller.</p>
+      <p class="hint" style="margin:10px 0 0" data-t="epHint">Touche le cadenas pour indiquer si la ligne est verrouillée en jeu. Touche une ligne pour la modifier. Sous chaque ligne : la cible de l'emplacement et la valeur minimum à verrouiller.</p>
     </section>
   </div>
 
   <details class="panel" open>
-    <summary><span>Réglage de l'analyse automatique · <span id="autoCat"></span></span></summary>
-    <p class="lede" style="margin:10px 0 0">Dans l'écran « Définit la cible d'analyse automatique », coche seulement ces stats avec le grade indiqué. Le jeu ne filtre que la couleur : vérifie la valeur ici avant de verrouiller.</p>
+    <summary><span><span data-t="autoH">Réglage de l'analyse automatique</span> · <span id="autoCat"></span></span></summary>
+    <p class="lede" style="margin:10px 0 0" data-t="autoLede">Dans l'écran « Définit la cible d'analyse automatique », coche seulement ces stats avec le grade indiqué. Le jeu ne filtre que la couleur : vérifie la valeur ici avant de verrouiller.</p>
     <div class="tablewrap"><table>
-      <thead><tr><th>Empl.</th><th>Stats à cocher</th><th>Grade mini</th><th>Valeur à verrouiller</th></tr></thead>
+      <thead><tr data-t="autoTh"><th>Empl.</th><th>Stats à cocher</th><th>Grade mini</th><th>Valeur à verrouiller</th></tr></thead>
       <tbody id="autoBody"></tbody>
     </table></div>
   </details>
 
   <details class="panel" open>
-    <summary><span>Total de tes bonus</span></summary>
-    <p class="lede" style="margin:10px 0 0">Toutes les lignes saisies s'appliquent en jeu, verrouillées ou non. Voici leur somme sur les 5 catégories.</p>
+    <summary><span data-t="sumH">Total de tes bonus</span></summary>
+    <p class="lede" style="margin:10px 0 0" data-t="sumLede">Toutes les lignes saisies s'appliquent en jeu, verrouillées ou non. Voici leur somme sur les 5 catégories.</p>
     <div class="tablewrap"><table>
-      <thead><tr><th>Stat</th><th>Total</th><th>Détail</th></tr></thead>
+      <thead><tr data-t="sumTh"><th>Stat</th><th>Total</th><th>Détail</th></tr></thead>
       <tbody id="sumBody"></tbody>
     </table></div>
   </details>
 
   <details class="panel" open>
-    <summary><span>Sauvegarde et partage</span></summary>
+    <summary><span data-t="ioH">Sauvegarde et partage</span></summary>
     <div class="io">
       <div class="io-col">
-        <span class="flabel">Exporter mes lignes</span>
-        <p class="hint">Copie un code qui contient tes 5 catégories. Garde-le dans un message Discord ou un fichier texte pour le retrouver sur un autre PC.</p>
-        <div class="btnrow"><button class="btn" id="expBtn" type="button">Copier ma sauvegarde</button><button class="btn ghost" id="dlBtn" type="button" hidden>Télécharger un fichier</button></div>
-        <textarea id="expOut" readonly hidden aria-label="Code de sauvegarde"></textarea>
+        <span class="flabel" data-t="expH">Exporter mes lignes</span>
+        <p class="hint" data-t="expHint">Copie un code qui contient tes 5 catégories. Garde-le dans un message Discord ou un fichier texte pour le retrouver sur un autre PC.</p>
+        <div class="btnrow"><button class="btn" id="expBtn" type="button" data-t="expBtn">Copier ma sauvegarde</button><button class="btn ghost" id="dlBtn" type="button" hidden data-t="dlBtn">Télécharger un fichier</button></div>
+        <textarea id="expOut" readonly hidden aria-label="Code"></textarea>
       </div>
       <div class="io-col">
-        <label class="flabel" for="impIn">Importer une sauvegarde</label>
-        <p class="hint">Colle un code de sauvegarde. Il remplace toutes les lignes actuelles de cette page.</p>
+        <label class="flabel" for="impIn" data-t="impH">Importer une sauvegarde</label>
+        <p class="hint" data-t="impHint">Colle un code de sauvegarde. Il remplace toutes les lignes actuelles de cette page.</p>
         <textarea id="impIn" placeholder="AION2P:…"></textarea>
-        <div class="btnrow"><button class="btn" id="impBtn" type="button">Importer</button><button class="btn ghost" id="upBtn" type="button" hidden>Ouvrir un fichier</button><input type="file" id="upIn" accept=".txt,text/plain" hidden></div>
-        <div class="confirm" id="impConfirm" hidden>Remplacer tes lignes actuelles par cette sauvegarde ? <button class="btn" id="impYes" type="button">Oui, remplacer</button> <button class="btn ghost" id="impNo" type="button">Annuler</button></div>
+        <div class="btnrow"><button class="btn" id="impBtn" type="button" data-t="impBtn">Importer</button><button class="btn ghost" id="upBtn" type="button" hidden data-t="upBtn">Ouvrir un fichier</button><input type="file" id="upIn" accept=".txt,text/plain" hidden></div>
+        <div class="confirm" id="impConfirm" hidden><span data-t="impQ">Remplacer tes lignes actuelles par cette sauvegarde ?</span> <button class="btn" id="impYes" type="button" data-t="impYes">Oui, remplacer</button> <button class="btn ghost" id="impNo" type="button" data-t="cancel">Annuler</button></div>
       </div>
     </div>
-    <div class="io-foot"><button class="btn ghost" id="resetBtn" type="button">Tout effacer</button><span class="confirm" id="resetConfirm" hidden>Effacer les 5 catégories ? <button class="btn" id="resetYes" type="button">Oui, tout effacer</button> <button class="btn ghost" id="resetNo" type="button">Annuler</button></span></div>
+    <div class="io-foot"><button class="btn ghost" id="resetBtn" type="button" data-t="resetBtn">Tout effacer</button><span class="confirm" id="resetConfirm" hidden><span data-t="resetQ">Effacer les 5 catégories ?</span> <button class="btn" id="resetYes" type="button" data-t="resetYes">Oui, tout effacer</button> <button class="btn ghost" id="resetNo" type="button" data-t="cancel">Annuler</button></span></div>
     <div class="toast" id="ioToast" aria-live="polite"></div>
   </details>
 
   <div class="ref">
     <details class="panel">
-      <summary>Comment sont calculés les seuils</summary>
-      <ul class="rules">
+      <summary data-t="rulesH">Comment sont calculés les seuils</summary>
+      <ul class="rules" data-t="rules">
         <li>Chaque fourchette va de la valeur minimum en jaune (Unique) à la valeur maximum en orange (Héroïque), relevées en jeu.</li>
         <li><b>Cible prioritaire d'un emplacement offensif</b> : par défaut, verrouille à partir de <b>50 %</b> de la fourchette.</li>
         <li><b>Cible secondaire, ou emplacement défensif</b> : par défaut, à partir de <b>70 %</b>.</li>
@@ -260,19 +266,66 @@ footer{color:var(--muted);font-size:12.5px;text-align:center}
       </ul>
     </details>
     <details class="panel">
-      <summary>Lexique du guide anglais</summary>
+      <summary data-t="lexH">Noms des stats FR ⇄ EN</summary>
+      <p class="hint" style="margin:10px 0 0" data-t="lexHint">Les noms anglais viennent du guide communautaire et peuvent différer légèrement du client anglais du jeu.</p>
       <div class="tablewrap"><table>
-        <thead><tr><th>Guide</th><th>En jeu</th></tr></thead>
+        <thead><tr><th>Français</th><th>English</th></tr></thead>
         <tbody id="lex"></tbody>
       </table></div>
     </details>
   </div>
 
-  <footer>Fourchettes relevées en jeu le 1er novembre 2026. Effets des stats d'après wikily.gg. Priorités d'après le guide communautaire, adaptées au Sorcier. Emblèmes dessinés pour cet outil. Ton suivi est gardé dans ce navigateur uniquement.</footer>
+  <footer data-t="footer">Fourchettes relevées en jeu le 1er novembre 2026. Effets des stats d'après wikily.gg. Priorités d'après un guide communautaire, adaptées au Sorcier. Emblèmes dessinés pour cet outil. Ton suivi est gardé dans ce navigateur uniquement. Outil de fan, non affilié à NCSOFT.</footer>
 </div>
 
 <script>
 (function(){
+/* ---------- langue ---------- */
+let LANG=(()=>{try{const v=localStorage.getItem('perception-lang');if(v==='fr'||v==='en')return v;}catch(e){}return /^fr/i.test(navigator.language||'')?'fr':'en';})();
+const t=(fr,en)=>LANG==='en'?en:fr;
+
+const EN_STATIC={
+  h1:'Species <span>Perception</span>',
+  tagline:'Sorcerer level 45 · your in-game screen, line by line, with a verdict for each',
+  legend:'<span><i style="background:var(--r-h)"></i>Heroic</span><span><i style="background:var(--r-u)"></i>Unique</span><span><i style="background:var(--r-e)"></i>Epic</span><span><i style="background:var(--r-r)"></i>Rare</span><span><i style="background:var(--r-g)"></i>Common</span><span>· <b class="c-ok">✓</b> lock <b class="c-mid">≈</b> fair <b class="c-no">↻</b> reroll</span>',
+  chkH:'Enter a line', chkLede:'Copy the line exactly as it appears in game. The verdict updates as you type.',
+  fSlot:'Slot', fStat:'Stat', fColor:'Colour', fVal:'Value', fLocked:'Locked in game',
+  clear:'Clear line', advH:'Family summary', lvl:'Lv. 10 (MAX)', epSub:'✦ Analysis effects', cap:'CRIT at 50 % (cap)',
+  epHint:'Click the padlock to mark a line as locked in game. Click a line to edit it. Under each line: the slot target and the minimum value worth locking.',
+  autoH:'Auto-analysis settings',
+  autoLede:'On the auto-analysis target screen, tick only these stats with the grade shown. The game only filters by colour, so check the value here before locking.',
+  autoTh:'<th>Slot</th><th>Stats to tick</th><th>Min. grade</th><th>Value to lock</th>',
+  sumH:'Your bonus totals', sumLede:'Every line you enter applies in game, locked or not. Here is their sum across the 5 families.',
+  sumTh:'<th>Stat</th><th>Total</th><th>Breakdown</th>',
+  ioH:'Backup and sharing', expH:'Export my lines', expHint:'Copies a code holding your 5 families. Keep it in a Discord message or a text file to restore it on another PC.',
+  expBtn:'Copy my backup', dlBtn:'Download a file', impH:'Import a backup', impHint:'Paste a backup code. It replaces every line currently on this page.',
+  impBtn:'Import', upBtn:'Open a file', impQ:'Replace your current lines with this backup?', impYes:'Yes, replace', cancel:'Cancel',
+  resetBtn:'Clear everything', resetQ:'Clear all 5 families?', resetYes:'Yes, clear everything',
+  rulesH:'How thresholds are calculated',
+  rules:'<li>Each range goes from the minimum Unique (yellow) value to the maximum Heroic (orange) value, recorded in game.</li><li><b>Priority target on an offensive slot</b>: by default, lock from <b>50 %</b> of the range.</li><li><b>Secondary target, or defensive slot</b>: by default, from <b>70 %</b>.</li><li>Anyone can change their standard by dragging the white marker on the verdict gauge. The setting is kept in your browser.</li><li>Up to 20 points under the threshold, the value is "fair": keep it if your budget is tight.</li><li>Every lock raises the cost of all following rerolls. It stays cheap up to 2 locks (11,000 kinah), then climbs fast: 15,000 at 3 locks, 24,000 at 4, 43,000 at 5.</li><li><b>Crit rate is capped at 50 %</b> (lowered by the target\'s Critical Resistance). Until you reach it, Critical Hit ranks above Power Shard. Once at 50 %, tick "CRIT at 50 %" above the 9 lines.</li><li>Other game caps: Evasion 30 %, cooldown reduction 60 %, MP cost reduction 60 %.</li>',
+  lexH:'Stat names FR ⇄ EN', lexHint:'English names come from the community guide and may differ slightly from the English game client.',
+  footer:'Ranges recorded in game on 1 November 2026. Stat effects from wikily.gg. Priorities from a community guide, adapted to the Sorcerer. Emblems drawn for this tool. Your data stays in this browser only. Fan-made tool, not affiliated with NCSOFT.'
+};
+const FR_STATIC={};
+document.querySelectorAll('[data-t]').forEach(e=>{if(!(e.dataset.t in FR_STATIC))FR_STATIC[e.dataset.t]=e.innerHTML;});
+
+/* noms des stats : clés internes en français, affichage traduit */
+const SN={'ATQ supplémentaire':'Attack Bonus','ATQ max':'Max Attack','Perforation':'Penetration','ATQ CRIT':'Critical Attack','ATQ frontale':'Frontal Attack','ATQ dans le dos':'Back Attack','ATQ JcE':'PvE Attack','ATQ contre les boss':'Boss Attack','PV':'HP','PM':'MP',
+ 'Augmentation des PV':'HP Increase','DÉF supplémentaire':'Defense Bonus','DÉF CRIT':'Critical Defense','DÉF frontale':'Frontal Defense','DÉF dans le dos':'Back Defense','RÉS aux CRIT':'Critical Resistance','RÉS CRIT frontal':'Frontal Crit Resistance','RÉS CRIT dans le dos':'Back Crit Resistance','DÉF JcE':'PvE Defense','DÉF contre les boss':'Boss Defense',
+ 'CRIT':'Critical Hit','CRIT dans le dos':'Back Critical Hit','CRIT frontal':'Frontal Critical Hit','Précision supplémentaire':'Accuracy Bonus','Précision JcE':'PvE Accuracy','DGT supplémentaires Éclat de pouvoir':'Power Shard Bonus','Blocage':'Block','Esquive supplémentaire':'Evasion Bonus','Esquive JcE':'PvE Evasion',
+ 'Boost de DGT':'Damage Boost','Boost de DGT JcE':'PvE Damage Boost','Boost de DGT CRIT':'Critical Damage Boost','Boost de DGT arme':'Weapon Damage Boost','Boost de DGT dans le dos':'Back Damage Boost','Boost de DGT frontaux':'Frontal Damage Boost',
+ 'Perforation blindage':'Endurance Penetration','Perforation de la restauration':'Restoration Penetration','Taux altération état':'Status Effect Chance',
+ 'Tolérance aux DGT':'Damage Tolerance','Tolérance aux DGT JcE':'PvE Damage Tolerance','Tolérance aux DGT CRIT':'Critical Damage Tolerance',"Tolérance aux DGT d'arme":'Weapon Damage Tolerance','Tolérance aux DGT frontaux':'Frontal Damage Tolerance','Tolérance aux DGT dans le dos':'Back Damage Tolerance',
+ 'Blindage':'Endurance','Restauration':'Restoration',"RÉS aux altérations d'état":'Status Effect Resistance','Taux multi-coups':'Multi-Hit Chance','Coup parfait':'Perfect Chance','Coup puissant':'Double Chance','RES multi-coups':'Multi-Hit Resistance','RÉS parfaite':'Perfect Resistance','RÉS coup puissant':'Double Resistance','Autre stat':'Other stat'};
+const SPN={'ATQ':'Attack','DÉF':'Defense','CRIT':'Critical Hit','Précision':'Accuracy','Esquive':'Evasion','Blocage':'Block','RÉS CRIT':'Crit Resistance','Boost de DGT':'Damage Boost','Tolérance aux DGT':'Damage Tolerance'};
+function N(s){
+  if(LANG!=='en') return s;
+  if(SN[s]) return SN[s];
+  for(const c of CATS){ if(s.endsWith(' '+c.name)){const base=s.slice(0,-(c.name.length+1));if(SPN[base])return c.en+' '+SPN[base];} }
+  return s;
+}
+
+/* ---------- données relevées en jeu (min Unique → max Héroïque) ---------- */
 const R=(a,b,p)=>({a,b,p:!!p});
 const ATK={'ATQ supplémentaire':R(6,16),'ATQ max':R(8,20),'Perforation':R(80,200),'ATQ CRIT':R(8,20),'ATQ frontale':R(8,20),'ATQ dans le dos':R(8,20),'ATQ JcE':R(8,20),'ATQ contre les boss':R(8,20),'PV':R(40,100),'PM':R(20,50)};
 const DEF={'Augmentation des PV':R(.6,1.6,1),'DÉF supplémentaire':R(60,160),'DÉF CRIT':R(80,200),'DÉF frontale':R(80,200),'DÉF dans le dos':R(80,200),'RÉS aux CRIT':R(10,30),'RÉS CRIT frontal':R(15,40),'RÉS CRIT dans le dos':R(15,40),'DÉF JcE':R(80,200),'DÉF contre les boss':R(80,200)};
@@ -290,25 +343,26 @@ const ICONS={
 };
 
 const CATS=[
- {id:'intellia',name:'Intellia',icon:'owl',
+ {id:'intellia',name:'Intellia',en:'Cogni',icon:'owl',
   s4:{list:{'Boost de DGT':P13,'Boost de DGT JcE':PJ,'Boost de DGT CRIT':P13,'Perforation blindage':P13,'Perforation de la restauration':P13,'Boost de DGT Intellia':PS,'Taux altération état':P13},top:['Boost de DGT','Boost de DGT JcE','Boost de DGT CRIT'],ok:[]},
   s7:{list:{'Tolérance aux DGT':P13,'Tolérance aux DGT JcE':PJ,'Blindage':P13,'Tolérance aux DGT CRIT':P13,'Restauration':P13,'Tolérance aux DGT Intellia':PS,"RÉS aux altérations d'état":P13},ok:['Tolérance aux DGT','Tolérance aux DGT JcE','Blindage']}},
- {id:'bestia',name:'Bestia',icon:'wolf',
+ {id:'bestia',name:'Bestia',en:'Fera',icon:'wolf',
   s4:{list:{'Boost de DGT arme':P13,'Boost de DGT':P13,'Boost de DGT JcE':PJ,'Perforation blindage':P13,'Perforation de la restauration':P13,'Boost de DGT Bestia':PS,'Taux altération état':P13},top:['Boost de DGT arme','Boost de DGT','Boost de DGT JcE'],ok:[]},
   s7:{list:{'Tolérance aux DGT':P13,'Tolérance aux DGT JcE':PJ,'Blindage':P13,"Tolérance aux DGT d'arme":P13,'Restauration':P13,'Tolérance aux DGT Bestia':PS,"RÉS aux altérations d'état":P13},ok:['Tolérance aux DGT','Tolérance aux DGT JcE','Blindage']}},
- {id:'natura',name:'Natura',icon:'tree',
+ {id:'natura',name:'Natura',en:'Natura',icon:'tree',
   s4:{list:{'Boost de DGT JcE':PJ,'Taux multi-coups':P13,'Coup parfait':P13,'Perforation blindage':P13,'Perforation de la restauration':P13,'Boost de DGT Natura':PS,'Taux altération état':P13},top:['Boost de DGT JcE','Taux multi-coups'],ok:['Coup parfait']},
   s7:{list:{'Tolérance aux DGT JcE':PJ,'Blindage':P13,'RES multi-coups':P13,'RÉS parfaite':P13,'Restauration':P13,'Tolérance aux DGT Natura':PS,"RÉS aux altérations d'état":P13},ok:['Tolérance aux DGT JcE','Blindage']}},
- {id:'varius',name:'Varius',icon:'swirl',
+ {id:'varius',name:'Varius',en:'Varian',icon:'swirl',
   s4:{list:{'Boost de DGT dans le dos':P13,'Boost de DGT JcE':PJ,'Boost de DGT frontaux':P13,'Perforation blindage':P13,'Perforation de la restauration':P13,'Boost de DGT Varius':PS,'Taux altération état':P13},top:['Boost de DGT dans le dos','Boost de DGT JcE'],ok:['Boost de DGT frontaux']},
   s7:{list:{'Tolérance aux DGT JcE':PJ,'Blindage':P13,'Tolérance aux DGT frontaux':P13,'Tolérance aux DGT dans le dos':P13,'Restauration':P13,'Tolérance aux DGT Varius':PS,"RÉS aux altérations d'état":P13},ok:['Tolérance aux DGT JcE','Blindage']}},
- {id:'special',name:'Spéciaux',icon:'star',
+ {id:'special',name:'Spéciaux',en:'Special',icon:'star',
   s4:{list:{'Coup puissant':P13,'Boost de DGT':P13,'Boost de DGT CRIT':P13,'Boost de DGT frontaux':P13,'Boost de DGT dans le dos':P13,'Perforation blindage':P13,'Taux altération état':P13},top:['Coup puissant'],ok:[]},
   s7:{list:{'Tolérance aux DGT':P13,'Blindage':P13,'Tolérance aux DGT CRIT':P13,'Tolérance aux DGT frontaux':P13,'Tolérance aux DGT dans le dos':P13,'RÉS coup puissant':P13,"RÉS aux altérations d'état":P13},ok:['Tolérance aux DGT','Blindage']}}
 ];
+const CN=c=>LANG==='en'?c.en:c.name;
 
 const TYPE={1:'atk',5:'atk',2:'def',8:'def',3:'crit',6:'crit',9:'crit',4:'dmg',7:'tol'};
-const KIND={atk:'Attaque',def:'Défense',crit:'Crit / Précision',dmg:'% de dégâts',tol:'Réduction de DGT'};
+const KIND=k=>({atk:t('Attaque','Attack'),def:t('Défense','Defense'),crit:t('Crit / Précision','Crit / Accuracy'),dmg:t('% de dégâts','% damage'),tol:t('Réduction de DGT','Damage reduction')})[k];
 const DEFENSIVE={def:1,tol:1};
 let CAP=(()=>{try{return localStorage.getItem('perception-sorcier-cap')==='1'}catch(e){return false}})();
 const Q_SOFT=.2, Q_DEF={top:.5,ok:.7};
@@ -316,56 +370,57 @@ let Q=(()=>{try{const v=JSON.parse(localStorage.getItem('perception-sorcier-q'))
 const saveQ=()=>{try{localStorage.setItem('perception-sorcier-q',JSON.stringify(Q))}catch(e){}};
 /* prix relevés en jeu : [cristaux, kinah] pour 0 à 8 verrous */
 const COST=[[36,9000],[40,10000],[44,11000],[60,15000],[96,24000],[172,43000],[248,62000],[324,81000],[400,100000]];
-const RAR=[{k:'h',n:'Héroïque'},{k:'u',n:'Unique'},{k:'e',n:'Épique'},{k:'r',n:'Rare'},{k:'g',n:'Général'}];
+const RAR=[{k:'h',fr:'Héroïque',en:'Heroic'},{k:'u',fr:'Unique',en:'Unique'},{k:'e',fr:'Épique',en:'Epic'},{k:'r',fr:'Rare',en:'Rare'},{k:'g',fr:'Général',en:'Common'}];
 
 function slotData(cat,slot){
-  const t=TYPE[slot];
-  if(t==='atk') return {list:ATK,top:['ATQ max','ATQ supplémentaire'],ok:['ATQ JcE','ATQ contre les boss','ATQ CRIT']};
-  if(t==='def') return {list:DEF,top:[],ok:['Augmentation des PV','DÉF supplémentaire']};
-  if(t==='crit') return {list:CRIT,top:CAP?['DGT supplémentaires Éclat de pouvoir','CRIT','CRIT dans le dos','Précision supplémentaire']:['CRIT','CRIT dans le dos','Précision supplémentaire','DGT supplémentaires Éclat de pouvoir'],ok:['Précision JcE']};
-  if(t==='dmg') return {list:Object.assign({},cat.s4.list,FILL),top:cat.s4.top,ok:cat.s4.ok};
+  const ty=TYPE[slot];
+  if(ty==='atk') return {list:ATK,top:['ATQ max','ATQ supplémentaire'],ok:['ATQ JcE','ATQ contre les boss','ATQ CRIT']};
+  if(ty==='def') return {list:DEF,top:[],ok:['Augmentation des PV','DÉF supplémentaire']};
+  if(ty==='crit') return {list:CRIT,top:CAP?['DGT supplémentaires Éclat de pouvoir','CRIT','CRIT dans le dos','Précision supplémentaire']:['CRIT','CRIT dans le dos','Précision supplémentaire','DGT supplémentaires Éclat de pouvoir'],ok:['Précision JcE']};
+  if(ty==='dmg') return {list:Object.assign({},cat.s4.list,FILL),top:cat.s4.top,ok:cat.s4.ok};
   return {list:Object.assign({},cat.s7.list,FILL7),top:[],ok:cat.s7.ok};
 }
 function lowStats(cat){const n=cat.name;return ['PV','PM','ATQ '+n,'DÉF '+n,'CRIT '+n,'Précision '+n,'Esquive '+n,'Blocage '+n,'RÉS CRIT '+n,'ATQ JcE','DÉF JcE','Esquive JcE','Précision JcE','DGT supplémentaires Éclat de pouvoir','Autre stat'];}
 
 const NOTES={
-  'DGT supplémentaires Éclat de pouvoir':"N°1 du guide une fois le plafond de critique atteint. Pour l'instant CRIT passe devant, mais une bonne valeur reste à garder.",
-  'CRIT':"Prioritaire tant que ton taux de CRIT n'atteint pas 50 %, le plafond du jeu. Au-delà, chaque point est perdu.",
-  'ATQ JcE':'Augmente les dégâts contre tous les monstres. Absente du guide, mais solide en PvE.',
-  'ATQ contre les boss':'Augmente les dégâts contre les boss seulement. Absente du guide, mais solide pour un Sorcier en donjon.',
-  'Perforation':'Ignore une partie de la DÉF de la cible.',
-  'ATQ CRIT':'Augmente les dégâts de tes coups critiques uniquement.',
-  'Boost de DGT':'Augmente tous tes dégâts. Réduit par la Tolérance aux DGT de la cible.',
-  'Boost de DGT CRIT':'Augmente les dégâts de tes coups critiques uniquement.',
-  'Tolérance aux DGT':'Réduit tous les dégâts que tu reçois.',
-  'Tolérance aux DGT JcE':'Réduit les dégâts reçus des monstres. Monte jusqu\'à 4 %.',
-  'Augmentation des PV':'Pourcentage de tes PV max : plus tu as de PV, plus elle rapporte.',
-  'CRIT dans le dos':'Fourchette plus haute que le CRIT simple, et ignore le Blocage de la cible quand tu frappes dans le dos. Excellent si tu es souvent dans le dos du boss en groupe.',
-  'Boost de DGT arme':"Touche toute l'Attaque de ton équipement, sorts compris, et occupe sa propre catégorie dans le calcul des dégâts.",
-  'Coup puissant':"La « Double Chance » du guide : déclenche Double, qui inflige beaucoup plus de dégâts selon les dégâts finaux. Aucune option de secours : relance jusqu'à l'obtenir avant de verrouiller autre chose.",
-  'Boost de DGT dans le dos':"Augmente les dégâts dans le dos et ignore le Blocage de la cible. Le guide recommande le boost positionnel pour Varius. Comme tu es souvent dans le dos, c'est cette version qu'on vise.",
-  'Boost de DGT JcE':"Monte jusqu'à 4 %, plus haut que les autres boosts de cet emplacement.",
-  'Blindage':'Chance de déclencher Blindage, qui divise par deux les dégâts reçus. C\'est l\'« Endurance » du guide.',
-  'Taux multi-coups':'Ajoute jusqu\'à 4 coups supplémentaires, proportionnels à ton ATQ.',
-  'Coup parfait':'Déclenche Parfait, qui inflige plus de dégâts selon l\'ATQ max de ton arme. Se combine bien avec ATQ max.',
-  'ATQ max':'N°1 du guide. Elle renforce aussi Coup parfait, qui se base sur l\'ATQ max de l\'arme.'
+  'DGT supplémentaires Éclat de pouvoir':["N°1 du guide une fois le plafond de critique atteint. Pour l'instant CRIT passe devant, mais une bonne valeur reste à garder.","The guide's #1 once your crit cap is reached. For now Critical Hit ranks above it, but a good value is still worth keeping."],
+  'CRIT':["Prioritaire tant que ton taux de CRIT n'atteint pas 50 %, le plafond du jeu. Au-delà, chaque point est perdu.","Top priority until your crit rate reaches 50 %, the game's cap. Past that, every point is wasted."],
+  'ATQ JcE':['Augmente les dégâts contre tous les monstres. Absente du guide, mais solide en PvE.','Raises damage against all monsters. Not in the guide, but solid in PvE.'],
+  'ATQ contre les boss':['Augmente les dégâts contre les boss seulement. Absente du guide, mais solide pour un Sorcier en donjon.','Raises damage against bosses only. Not in the guide, but solid for a Sorcerer in dungeons.'],
+  'Perforation':['Ignore une partie de la DÉF de la cible.',"Ignores part of the target's Defense."],
+  'ATQ CRIT':['Augmente les dégâts de tes coups critiques uniquement.','Raises the damage of your critical hits only.'],
+  'Boost de DGT':['Augmente tous tes dégâts. Réduit par la Tolérance aux DGT de la cible.',"Raises all your damage. Reduced by the target's Damage Tolerance."],
+  'Boost de DGT CRIT':['Augmente les dégâts de tes coups critiques uniquement.','Raises the damage of your critical hits only.'],
+  'Tolérance aux DGT':['Réduit tous les dégâts que tu reçois.','Reduces all damage you take.'],
+  'Tolérance aux DGT JcE':["Réduit les dégâts reçus des monstres. Monte jusqu'à 4 %.",'Reduces damage taken from monsters. Goes up to 4 %.'],
+  'Augmentation des PV':['Pourcentage de tes PV max : plus tu as de PV, plus elle rapporte.','A percentage of your max HP: the more HP you have, the more it gives.'],
+  'CRIT dans le dos':['Fourchette plus haute que le CRIT simple, et ignore le Blocage de la cible quand tu frappes dans le dos. Excellent si tu es souvent dans le dos du boss en groupe.',"Higher range than plain Critical Hit, and ignores the target's Block when hitting from behind. Great if you often stand behind the boss in a group."],
+  'Boost de DGT arme':["Touche toute l'Attaque de ton équipement, sorts compris, et occupe sa propre catégorie dans le calcul des dégâts.",'Scales all the Attack from your gear, spells included, and sits in its own bucket of the damage formula.'],
+  'Coup puissant':["La « Double Chance » du guide : déclenche Double, qui inflige beaucoup plus de dégâts selon les dégâts finaux. Aucune option de secours : relance jusqu'à l'obtenir avant de verrouiller autre chose.",'Triggers Double, which deals much more damage based on final damage. No fallback option: reroll until you get it before locking anything else.'],
+  'Boost de DGT dans le dos':["Augmente les dégâts dans le dos et ignore le Blocage de la cible. Le guide recommande le boost positionnel pour Varius. Comme tu es souvent dans le dos, c'est cette version qu'on vise.","Raises damage from behind and ignores the target's Block. The guide recommends the positional boost for Varian; this tool targets the back version."],
+  'Boost de DGT JcE':["Monte jusqu'à 4 %, plus haut que les autres boosts de cet emplacement.",'Goes up to 4 %, higher than the other boosts in this slot.'],
+  'Blindage':["Chance de déclencher Blindage, qui divise par deux les dégâts reçus. C'est l'« Endurance » du guide.",'Chance to trigger Endurance, which halves the damage you take.'],
+  'Taux multi-coups':["Ajoute jusqu'à 4 coups supplémentaires, proportionnels à ton ATQ.",'Adds up to 4 extra hits, scaled on your Attack.'],
+  'Coup parfait':["Déclenche Parfait, qui inflige plus de dégâts selon l'ATQ max de ton arme. Se combine bien avec ATQ max.","Triggers Perfect, which deals more damage based on your weapon's Max Attack. Pairs well with Max Attack."],
+  'ATQ max':["N°1 du guide. Elle renforce aussi Coup parfait, qui se base sur l'ATQ max de l'arme.","The guide's #1. It also boosts Perfect Chance, which is based on weapon Max Attack."]
 };
 function noteOf(s){
-  if(CAP&&s==='DGT supplémentaires Éclat de pouvoir') return 'N°1 de cet emplacement, puisque ton plafond de critique est atteint.';
-  if(CAP&&s==='CRIT') return 'Ton plafond de critique est atteint : CRIT passe derrière l\'Éclat de pouvoir.';
-  return NOTES[s];
+  if(CAP&&s==='DGT supplémentaires Éclat de pouvoir') return t('N°1 de cet emplacement, puisque ton plafond de critique est atteint.','#1 in this slot, since your crit cap is reached.');
+  if(CAP&&s==='CRIT') return t("Ton plafond de critique est atteint : CRIT passe derrière l'Éclat de pouvoir.",'Your crit cap is reached: Critical Hit now ranks below Power Shard.');
+  const n=NOTES[s];return n?t(n[0],n[1]):'';
 }
 function reason(stat,cat){
-  if(stat==='Autre stat') return "Elle n'est pas parmi les cibles de cet emplacement.";
-  if(stat.endsWith(' '+cat.name)) return 'Elle ne marche que contre les monstres '+cat.name+'.';
-  if(/fronta|dans le dos/.test(stat)) return 'Positionnelle : en Sorcier à distance, tu ne contrôles pas ton angle.';
-  if(/Esquive/.test(stat)) return 'L\'Esquive est plafonnée à 30 % et sert peu à un Sorcier à distance.';
-  if(/Blocage/.test(stat)) return 'Le Blocage dépend du grade de ton équipement et sert peu à un Sorcier.';
-  if(stat==='PV'||stat==='PM') return 'Une valeur fixe minuscule par rapport à tes 18 000 PV.';
-  return 'Pas une cible pour cet emplacement.';
+  if(stat==='Autre stat') return t("Elle n'est pas parmi les cibles de cet emplacement.",'Not one of the targets for this slot.');
+  if(stat.endsWith(' '+cat.name)) return t('Elle ne marche que contre les monstres '+cat.name+'.','Only works against '+cat.en+' monsters.');
+  if(/fronta|dans le dos/.test(stat)) return t('Positionnelle : en Sorcier à distance, tu ne contrôles pas ton angle.',"Positional: as a ranged Sorcerer, you don't control your angle.");
+  if(/Esquive/.test(stat)) return t("L'Esquive est plafonnée à 30 % et sert peu à un Sorcier à distance.",'Evasion is capped at 30 % and does little for a ranged Sorcerer.');
+  if(/Blocage/.test(stat)) return t('Le Blocage dépend du grade de ton équipement et sert peu à un Sorcier.','Block depends on your gear grade and does little for a Sorcerer.');
+  if(stat==='PV'||stat==='PM') return t('Une valeur fixe minuscule par rapport à tes PV.','A tiny flat value compared to your HP.');
+  return t('Pas une cible pour cet emplacement.','Not a target for this slot.');
 }
 
-const fmt=(v,p)=>String(Math.round(v*10)/10).replace('.',',')+(p?' %':'');
+const fmt=(v,p)=>{const s=String(Math.round(v*10)/10);return (LANG==='en'?s:s.replace('.',','))+(p?' %':'');};
+const money=n=>n.toLocaleString(LANG==='en'?'en-GB':'fr-FR');
 function tierOf(slot,stat,d){return (d.top.includes(stat)&&!DEFENSIVE[TYPE[slot]])?'top':'ok';}
 function needQ(slot,stat,d){return Q[tierOf(slot,stat,d)];}
 function minVal(r,q){const v=r.a+q*(r.b-r.a);return r.p?Math.ceil(v*10-1e-9)/10:Math.ceil(v-1e-9);}
@@ -375,18 +430,18 @@ function isPct(cat,slot,s){const r=slotData(cat,slot).list[s];return r?r.p:/^(Bo
 function judge(cat,slot,stat,val){
   const d=slotData(cat,slot), r=d.list[stat];
   const order=d.top.concat(d.ok).indexOf(stat)+1;
-  if(!order||!r) return {cls:'roll',t:'Relance',why:reason(stat,cat)};
+  if(!order||!r) return {cls:'roll',t:t('Relance','Reroll'),why:reason(stat,cat)};
   const q=needQ(slot,stat,d), need=minVal(r,q), soft=minVal(r,Math.max(0,q-Q_SOFT));
-  const pos='Choix n°'+order+' de cet emplacement.';
-  if(val==null) return {cls:'wait',t:'Tape la valeur',why:pos+' Verrouille à partir de '+fmt(need,r.p)+'.',need,soft,r};
-  if(val<r.a) return {cls:'roll',t:'Relance',why:pos+' '+fmt(val,r.p)+' est sous le minimum jaune ('+fmt(r.a,r.p)+').',need,soft,r,val};
-  if(val>=need) return {cls:'lock',t:'Verrouille',why:pos+' '+fmt(val,r.p)+' atteint le seuil de '+fmt(need,r.p)+'.',need,soft,r,val};
-  if(val>=soft) return {cls:'keep',t:'Correct',why:pos+' '+fmt(val,r.p)+' est un peu sous le seuil de '+fmt(need,r.p)+'. Garde-le si ton budget est serré.',need,soft,r,val};
-  return {cls:'roll',t:'Relance',why:pos+' Bonne stat, mais '+fmt(val,r.p)+' est trop bas. Vise au moins '+fmt(need,r.p)+'.',need,soft,r,val};
+  const pos=t('Choix n°'+order+' de cet emplacement.','Choice #'+order+' for this slot.');
+  const V=fmt(val,r.p), NE=fmt(need,r.p);
+  if(val==null) return {cls:'wait',t:t('Tape la valeur','Type the value'),why:pos+' '+t('Verrouille à partir de '+NE+'.','Lock from '+NE+'.'),need,soft,r};
+  if(val<r.a) return {cls:'roll',t:t('Relance','Reroll'),why:pos+' '+t(V+' est sous le minimum jaune ('+fmt(r.a,r.p)+').',V+' is below the yellow minimum ('+fmt(r.a,r.p)+').'),need,soft,r,val};
+  if(val>=need) return {cls:'lock',t:t('Verrouille','Lock it'),why:pos+' '+t(V+' atteint le seuil de '+NE+'.',V+' meets the '+NE+' threshold.'),need,soft,r,val};
+  if(val>=soft) return {cls:'keep',t:t('Correct','Fair'),why:pos+' '+t(V+' est un peu sous le seuil de '+NE+'. Garde-le si ton budget est serré.',V+' is slightly under the '+NE+' threshold. Keep it if your budget is tight.'),need,soft,r,val};
+  return {cls:'roll',t:t('Relance','Reroll'),why:pos+' '+t('Bonne stat, mais '+V+' est trop bas. Vise au moins '+NE+'.','Good stat, but '+V+' is too low. Aim for at least '+NE+'.'),need,soft,r,val};
 }
 
 const KEY='perception-sorcier-v3';
-const L=(s,v,r,lk)=>({s,v,r,lk:!!lk});
 const DEFAULT={};
 function load(k,def){try{const v=localStorage.getItem(k);return v?JSON.parse(v):def}catch(e){return def}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
@@ -397,6 +452,7 @@ const st={cat:CATS.find(c=>c.id===ui.cat)||CATS[0],slot:ui.slot||1,stat:null,rar
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const mine=()=>prog[st.cat.id]||(prog[st.cat.id]={});
+const plural=(n,fr,frs,en,ens)=>n+' '+(LANG==='en'?(n===1?en:ens):(n>1?frs:fr));
 
 const RC={h:'var(--r-h)',u:'var(--r-u)',e:'var(--r-e)',r:'var(--r-r)',g:'var(--r-g)'};
 function medal(c){
@@ -412,28 +468,29 @@ function medal(c){
 function renderTabs(){
   $('tabs').innerHTML=CATS.map(c=>{
     const m=prog[c.id]||{}, n=Object.keys(m).length, lk=Object.values(m).filter(l=>l.lk).length;
-    return '<button class="medal" role="tab" aria-selected="'+(c.id===st.cat.id)+'" data-c="'+c.id+'">'+medal(c)+'<span>'+esc(c.name)+'<small>'+(n?n+'/9 saisies · '+lk+' verrou'+(lk>1?'s':''):'à saisir')+'</small></span></button>';
+    const sub=n?n+'/9 '+t('saisies','entered')+' · '+plural(lk,'verrou','verrous','lock','locks'):t('à saisir','to enter');
+    return '<button class="medal" role="tab" aria-selected="'+(c.id===st.cat.id)+'" data-c="'+c.id+'" title="'+esc(c.name+' / '+c.en)+'">'+medal(c)+'<span>'+esc(CN(c))+'<small>'+sub+'</small></span></button>';
   }).join('');
 }
 
-function renderSlotPick(){let h='';for(let i=1;i<=9;i++)h+='<button type="button" aria-pressed="'+(i===st.slot)+'" data-s="'+i+'" aria-label="Emplacement '+i+'">'+i+'</button>';$('slotPick').innerHTML=h;}
-function renderRar(){$('rarPick').innerHTML=RAR.map(r=>'<button type="button" class="k-'+r.k+'" aria-pressed="'+(r.k===st.rar)+'" data-r="'+r.k+'">'+r.n+'</button>').join('');}
+function renderSlotPick(){let h='';for(let i=1;i<=9;i++)h+='<button type="button" aria-pressed="'+(i===st.slot)+'" data-s="'+i+'" aria-label="'+t('Emplacement','Slot')+' '+i+'">'+i+'</button>';$('slotPick').innerHTML=h;}
+function renderRar(){$('rarPick').innerHTML=RAR.map(r=>'<button type="button" class="k-'+r.k+'" aria-pressed="'+(r.k===st.rar)+'" data-r="'+r.k+'">'+t(r.fr,r.en)+'</button>').join('');}
 function renderStats(){
   const d=slotData(st.cat,st.slot), targets=d.top.concat(d.ok);
   const others=Object.keys(d.list).filter(s=>!targets.includes(s));
   const low=lowStats(st.cat).filter(s=>!targets.includes(s)&&!others.includes(s));
   if(!st.stat) st.stat=targets[0];
-  const opt=s=>'<option'+(s===st.stat?' selected':'')+'>'+esc(s)+'</option>';
-  $('statSel').innerHTML='<optgroup label="Cibles">'+targets.map(opt).join('')+'</optgroup><optgroup label="Autres stats de cet emplacement">'+others.map(opt).join('')+'</optgroup><optgroup label="Raretés basses">'+low.map(opt).join('')+'</optgroup>';
+  const opt=s=>'<option value="'+esc(s)+'"'+(s===st.stat?' selected':'')+'>'+esc(N(s))+'</option>';
+  $('statSel').innerHTML='<optgroup label="'+t('Cibles','Targets')+'">'+targets.map(opt).join('')+'</optgroup><optgroup label="'+t('Autres stats de cet emplacement','Other stats in this slot')+'">'+others.map(opt).join('')+'</optgroup><optgroup label="'+t('Raretés basses','Low rarities')+'">'+low.map(opt).join('')+'</optgroup>';
 }
 function gauge(v){
   if(!v.r) return '';
   const r=v.r, pc=x=>Math.max(0,Math.min(100,(x-r.a)/(r.b-r.a)*100));
   const mark=v.val!=null?'<span class="g-mark" style="left:'+pc(v.val)+'%"></span>':'';
   const tier=tierOf(st.slot,st.stat,slotData(st.cat,st.slot)), q=Q[tier];
-  return '<div class="gauge"><div class="g-track" id="gTrack" style="--t1:'+pc(v.soft)+'%;--t2:'+pc(v.need)+'%">'+mark+'<span class="g-tick" id="gTick" role="slider" tabindex="0" aria-label="Seuil de verrouillage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+Math.round(q*100)+'" style="left:'+(q*100)+'%"></span></div>'+
-    '<div class="g-lab"><span>'+fmt(r.a,r.p)+' jaune</span><span>seuil <b id="gNeed">'+fmt(v.need,r.p)+'</b></span><span>'+fmt(r.b,r.p)+' orange</span></div>'+
-    '<div class="g-q"><span>Ton exigence pour les '+(tier==='top'?'cibles prioritaires':'cibles secondaires et défensives')+' : <b id="gQ">'+Math.round(q*100)+' %</b> de la fourchette. Glisse le trait pour la changer.</span>'+(Q[tier]!==Q_DEF[tier]?'<button type="button" class="g-reset" id="gReset">Revenir à '+Math.round(Q_DEF[tier]*100)+' %</button>':'')+'</div></div>';
+  return '<div class="gauge"><div class="g-track" id="gTrack" style="--t1:'+pc(v.soft)+'%;--t2:'+pc(v.need)+'%">'+mark+'<span class="g-tick" id="gTick" role="slider" tabindex="0" aria-label="'+t('Seuil de verrouillage','Lock threshold')+'" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+Math.round(q*100)+'" style="left:'+(q*100)+'%"></span></div>'+
+    '<div class="g-lab"><span>'+fmt(r.a,r.p)+' '+t('jaune','yellow')+'</span><span>'+t('seuil','threshold')+' <b id="gNeed">'+fmt(v.need,r.p)+'</b></span><span>'+fmt(r.b,r.p)+' '+t('orange','orange')+'</span></div>'+
+    '<div class="g-q"><span>'+t('Ton exigence pour les '+(tier==='top'?'cibles prioritaires':'cibles secondaires et défensives'),'Your standard for '+(tier==='top'?'priority targets':'secondary and defensive targets'))+t(' : ',': ')+'<b id="gQ">'+Math.round(q*100)+' %</b> '+t('de la fourchette. Glisse le trait pour la changer.','of the range. Drag the marker to change it.')+'</span>'+(Q[tier]!==Q_DEF[tier]?'<button type="button" class="g-reset" id="gReset">'+t('Revenir à ','Reset to ')+Math.round(Q_DEF[tier]*100)+' %</button>':'')+'</div></div>';
 }
 /* glisser le trait du seuil */
 (function(){
@@ -446,7 +503,7 @@ function gauge(v){
     if($('gNeed')&&r)$('gNeed').textContent=fmt(minVal(r,q),r.p);
     if(!live){saveQ();renderVerdict();renderLines();renderAuto();}
   };
-  const qAt=x=>{const t=$('gTrack').getBoundingClientRect();return (x-t.left)/t.width;};
+  const qAt=x=>{const tr=$('gTrack').getBoundingClientRect();return (x-tr.left)/tr.width;};
   $('verdict').addEventListener('pointerdown',e=>{
     if(!e.target.closest('#gTick,#gTrack'))return;
     e.preventDefault();drag=e.pointerId;$('verdict').setPointerCapture(drag);apply(qAt(e.clientX),true);
@@ -468,12 +525,12 @@ function gauge(v){
 })();
 function renderVerdict(){
   const val=parseVal($('valIn').value), v=judge(st.cat,st.slot,st.stat,val), r=slotData(st.cat,st.slot).list[st.stat];
-  $('rangeHint').textContent=r?'Fourchette en jeu : '+fmt(r.a,r.p)+' (jaune) à '+fmt(r.b,r.p)+' (orange)':'';
-  const icon={lock:'🔒',keep:'≈',roll:'↻',wait:'…'}[v.cls];
+  $('rangeHint').textContent=r?t('Fourchette en jeu : '+fmt(r.a,r.p)+' (jaune) à '+fmt(r.b,r.p)+' (orange)','In-game range: '+fmt(r.a,r.p)+' (yellow) to '+fmt(r.b,r.p)+' (orange)'):'';
+  const icon={lock:'🔒',keep:'≈',roll:'↻',wait:'…'}[v.cls], note=noteOf(st.stat);
   $('verdict').className='verdict '+v.cls;
-  $('verdict').innerHTML='<div class="v-title"><span aria-hidden="true">'+icon+'</span>'+v.t+'</div><p>'+esc(v.why)+'</p>'+gauge(v)+(noteOf(st.stat)&&v.r?'<p class="meta">'+esc(noteOf(st.stat))+'</p>':'');
+  $('verdict').innerHTML='<div class="v-title"><span aria-hidden="true">'+icon+'</span>'+v.t+'</div><p>'+esc(v.why)+'</p>'+gauge(v)+(note&&v.r?'<p class="meta">'+esc(note)+'</p>':'');
   const has=!!mine()[st.slot];
-  $('saveBtn').textContent=(has?'Mettre à jour la ligne ':'Enregistrer la ligne ')+st.slot;
+  $('saveBtn').textContent=(has?t('Mettre à jour la ligne ','Update line '):t('Enregistrer la ligne ','Save line '))+st.slot;
   $('clearBtn').hidden=!has;
 }
 function loadForm(){
@@ -486,18 +543,18 @@ const LOCK='<svg viewBox="0 0 20 22"><path d="M5 9V6a5 5 0 0 1 10 0v3" fill="non
 function vdOf(cat,i,l){if(!l||l.v==null)return {c:'none',t:''};const v=judge(cat,i,l.s,l.v);return v.cls==='lock'?{c:'c-ok',t:'✓'}:v.cls==='keep'?{c:'c-mid',t:'≈'}:{c:'c-no',t:'↻'};}
 function renderLines(){
   const m=mine();
-  $('ep-h').textContent="Perception d'espèce "+st.cat.name;
+  $('ep-h').textContent=t("Perception d'espèce ",'Species Perception · ')+CN(st.cat);
   const n=Object.keys(m).length, lk=Object.values(m).filter(l=>l.lk).length;
-  $('epCount').textContent=n+'/9 lignes saisies · '+lk+' verrou'+(lk>1?'s':'');
+  $('epCount').textContent=n+'/9 '+t('lignes saisies','lines entered')+' · '+plural(lk,'verrou','verrous','lock','locks');
   let h='';
   for(let i=1;i<=9;i++){
     const type=TYPE[i], d=slotData(st.cat,i), first=d.top[0]||d.ok[0], r=d.list[first], l=m[i];
     const need=minVal(r,needQ(i,first,d)), more=d.top.concat(d.ok).slice(1,3), vd=vdOf(st.cat,i,l);
-    const sub=KIND[type]+(DEFENSIVE[type]?' · <span class="dz">défensif</span>':'')+' · cible : '+esc(first)+' <b>≥ '+fmt(need,r.p)+'</b>'+(more.length?' · puis '+more.map(esc).join(', '):'');
-    h+='<div class="line'+(i===st.slot?' sel':'')+'" role="button" tabindex="0" data-s="'+i+'" aria-label="Emplacement '+i+'">'+
-      '<button class="lk'+(l&&l.lk?' on':'')+'" data-lk="'+i+'" type="button" aria-pressed="'+!!(l&&l.lk)+'" aria-label="Verrou de l\'emplacement '+i+'"'+(l?'':' disabled')+'>'+LOCK+'</button>'+
+    const sub=KIND(type)+(DEFENSIVE[type]?' · <span class="dz">'+t('défensif','defensive')+'</span>':'')+' · '+t('cible : ','target: ')+esc(N(first))+' <b>≥ '+fmt(need,r.p)+'</b>'+(more.length?' · '+t('puis','then')+' '+more.map(x=>esc(N(x))).join(', '):'');
+    h+='<div class="line'+(i===st.slot?' sel':'')+'" role="button" tabindex="0" data-s="'+i+'" aria-label="'+t('Emplacement','Slot')+' '+i+'">'+
+      '<button class="lk'+(l&&l.lk?' on':'')+'" data-lk="'+i+'" type="button" aria-pressed="'+!!(l&&l.lk)+'" aria-label="'+t('Verrou','Lock')+' '+i+'"'+(l?'':' disabled')+'>'+LOCK+'</button>'+
       '<span class="num">'+i+'</span>'+
-      '<div class="cur"><span class="st '+(l?'k-'+l.r:'empty')+'">'+(l?esc(l.s):'Ligne non saisie')+'</span><span class="sub" title="'+sub.replace(/<[^>]+>/g,'').replace(/"/g,'&quot;')+'">'+sub+'</span></div>'+
+      '<div class="cur"><span class="st '+(l?'k-'+l.r:'empty')+'">'+(l?esc(N(l.s)):t('Ligne non saisie','Line not entered'))+'</span><span class="sub" title="'+sub.replace(/<[^>]+>/g,'').replace(/"/g,'&quot;')+'">'+sub+'</span></div>'+
       '<span class="val">'+(l&&l.v!=null?fmt(l.v,isPct(st.cat,i,l.s)):'')+'</span>'+
       '<span class="vd '+vd.c+'">'+vd.t+'</span>'+
     '</div>';
@@ -505,50 +562,65 @@ function renderLines(){
   $('lines').innerHTML=h;
   renderAdvice();
   const have=CR[st.cat.id]||0;
-  const split=n=>{const sp=Math.min(have,n);return sp?'<small>'+sp+' '+esc(st.cat.name)+' + '+(n-sp)+' universels</small>':'<small>'+n+' universels</small>';};
-  const pr=k=>COST[k][0]+' cristaux · '+COST[k][1].toLocaleString('fr-FR')+' kinah'+split(COST[k][0]);
-  let c='<div><em>Relance avec '+lk+' verrou'+(lk>1?'s':'')+'</em><span class="now">'+pr(lk)+'</span></div>';
-  if(COST[lk+1]) c+='<div><em>Avec un verrou de plus</em><span>'+pr(lk+1)+'</span></div>';
-  c+='<label class="cr"><em>Cristaux '+esc(st.cat.name)+' en stock</em><input type="text" inputmode="numeric" id="crIn" value="'+(have||'')+'" placeholder="0"></label>';
+  const split=x=>{const sp=Math.min(have,x);return '<small>'+(sp?sp+' '+esc(CN(st.cat))+' + '+(x-sp)+' '+t('universels','universal'):x+' '+t('universels','universal'))+'</small>';};
+  const pr=k=>COST[k][0]+' '+t('cristaux','crystals')+' · '+money(COST[k][1])+' kinah'+split(COST[k][0]);
+  let c='<div><em>'+t('Relance avec ','Reroll with ')+plural(lk,'verrou','verrous','lock','locks')+'</em><span class="now">'+pr(lk)+'</span></div>';
+  if(COST[lk+1]) c+='<div><em>'+t('Avec un verrou de plus','With one more lock')+'</em><span>'+pr(lk+1)+'</span></div>';
+  c+='<label class="cr"><em>'+t('Cristaux '+esc(CN(st.cat))+' en stock',esc(CN(st.cat))+' crystals in stock')+'</em><input type="text" inputmode="numeric" id="crIn" value="'+(have||'')+'" placeholder="0"></label>';
   $('cost').innerHTML=c;
 }
 function renderAdvice(){
   const m=mine(), n={ok:0,mid:0,no:0};
   for(let i=1;i<=9;i++){const v=vdOf(st.cat,i,m[i]);if(v.c==='c-ok')n.ok++;else if(v.c==='c-mid')n.mid++;else if(v.c==='c-no')n.no++;}
   const order=[4,1,5,3,6,9,7,2,8];
-  let next=order.find(i=>!m[i]);
-  let txt;
-  if(next) txt='Ligne <b>'+next+'</b> pas encore saisie. Recopie-la depuis le jeu.';
+  let next=order.find(i=>!m[i]), txt;
+  if(next) txt=t('Ligne <b>'+next+'</b> pas encore saisie. Recopie-la depuis le jeu.','Line <b>'+next+'</b> not entered yet. Copy it from the game.');
   else{
     next=order.find(i=>vdOf(st.cat,i,m[i]).c==='c-no')||order.find(i=>vdOf(st.cat,i,m[i]).c==='c-mid');
-    if(next){const d=slotData(st.cat,next),f=d.top[0]||d.ok[0],r=d.list[f];txt='Priorité : <b>emplacement '+next+'</b>, vise '+esc(f)+' ≥ '+fmt(minVal(r,needQ(next,f,d)),r.p)+'. Verrouille d\'abord les lignes ✓ pour ne pas les perdre.';}
-    else txt='Toutes les lignes atteignent leur seuil. Cette catégorie est terminée.';
+    if(next){const d=slotData(st.cat,next),f=d.top[0]||d.ok[0],r=d.list[f],v=esc(N(f))+' ≥ '+fmt(minVal(r,needQ(next,f,d)),r.p);txt=t('Priorité : <b>emplacement '+next+'</b>, vise '+v+". Verrouille d'abord les lignes ✓ pour ne pas les perdre.",'Priority: <b>slot '+next+'</b>, aim for '+v+'. Lock your ✓ lines first so you don\'t lose them.');}
+    else txt=t('Toutes les lignes atteignent leur seuil. Cette catégorie est terminée.','Every line meets its threshold. This family is done.');
   }
-  $('advice').innerHTML='<div class="adv-counts"><div><b class="c-ok">'+n.ok+'</b><span>à verrouiller</span></div><div><b class="c-mid">'+n.mid+'</b><span>correctes</span></div><div><b class="c-no">'+n.no+'</b><span>à relancer</span></div></div><div class="adv-next">'+txt+'</div>';
+  $('advice').innerHTML='<div class="adv-counts"><div><b class="c-ok">'+n.ok+'</b><span>'+t('à verrouiller','to lock')+'</span></div><div><b class="c-mid">'+n.mid+'</b><span>'+t('correctes','fair')+'</span></div><div><b class="c-no">'+n.no+'</b><span>'+t('à relancer','to reroll')+'</span></div></div><div class="adv-next">'+txt+'</div>';
 }
 function renderAuto(){
-  $('autoCat').textContent=st.cat.name;
+  $('autoCat').textContent=CN(st.cat);
   let h='';
   [[4],[1,5],[3,6,9],[7],[2,8]].forEach(g=>{
     const s=g[0], d=slotData(st.cat,s), def=!!DEFENSIVE[TYPE[s]], list=d.top.concat(d.ok);
-    h+='<tr><td class="mono">'+g.join(', ')+'</td><td>'+list.map(esc).join('<br>')+'</td><td>'+(def?'<span class="grade k-h">Héroïque</span>':'<span class="grade k-u">Unique ↑</span>')+'</td><td class="mono">'+list.map(x=>{const r=d.list[x];return esc(x)+' ≥ '+fmt(minVal(r,needQ(s,x,d)),r.p);}).join('<br>')+'</td></tr>';
+    h+='<tr><td class="mono">'+g.join(', ')+'</td><td>'+list.map(x=>esc(N(x))).join('<br>')+'</td><td>'+(def?'<span class="grade k-h">'+t('Héroïque','Heroic')+'</span>':'<span class="grade k-u">Unique ↑</span>')+'</td><td class="mono">'+list.map(x=>{const r=d.list[x];return esc(N(x))+' ≥ '+fmt(minVal(r,needQ(s,x,d)),r.p);}).join('<br>')+'</td></tr>';
   });
   $('autoBody').innerHTML=h;
 }
 function renderSum(){
   const agg={};
-  CATS.forEach(c=>{const m=prog[c.id]||{};Object.keys(m).forEach(s=>{const l=m[s];if(l.v==null||l.s==='Autre stat')return;const p=isPct(c,+s,l.s);(agg[l.s]=agg[l.s]||{t:0,p,d:[]});agg[l.s].t+=l.v;agg[l.s].d.push(c.name+' '+fmt(l.v,p));});});
-  const k=Object.keys(agg).sort((a,b)=>a.localeCompare(b,'fr'));
-  $('sumBody').innerHTML=k.length?k.map(x=>'<tr><td>'+esc(x)+'</td><td class="tot">'+fmt(agg[x].t,agg[x].p)+'</td><td class="hint">'+esc(agg[x].d.join(' · '))+'</td></tr>').join(''):'<tr><td colspan="3" class="hint">Aucune ligne saisie.</td></tr>';
+  CATS.forEach(c=>{const m=prog[c.id]||{};Object.keys(m).forEach(s=>{const l=m[s];if(l.v==null||l.s==='Autre stat')return;const p=isPct(c,+s,l.s);(agg[l.s]=agg[l.s]||{t:0,p,d:[]});agg[l.s].t+=l.v;agg[l.s].d.push(CN(c)+' '+fmt(l.v,p));});});
+  const k=Object.keys(agg).sort((a,b)=>N(a).localeCompare(N(b),LANG));
+  $('sumBody').innerHTML=k.length?k.map(x=>'<tr><td>'+esc(N(x))+'</td><td class="tot">'+fmt(agg[x].t,agg[x].p)+'</td><td class="hint">'+esc(agg[x].d.join(' · '))+'</td></tr>').join(''):'<tr><td colspan="3" class="hint">'+t('Aucune ligne saisie.','No lines entered yet.')+'</td></tr>';
 }
 function renderLex(){
-  const X=[['Max Attack','ATQ max'],['Attack Bonus','ATQ supplémentaire'],['HP Increase %','Augmentation des PV'],['Power Shard Bonus','DGT supplémentaires Éclat de pouvoir'],['Crit / Accuracy','CRIT / Précision supplémentaire'],['Damage Boost','Boost de DGT'],['PVE Damage Boost','Boost de DGT JcE'],['Critical Damage Boost','Boost de DGT CRIT'],['Weapon Damage Boost','Boost de DGT arme'],['Damage Tolerance','Tolérance aux DGT'],['PVE Damage Tolerance','Tolérance aux DGT JcE'],['Front/Back Damage Boost','Boost de DGT frontaux / dans le dos'],['Multi Hit','Taux multi-coups'],['Perfect Chance','Coup parfait'],['Double Chance','Coup puissant'],['Endurance','Blindage'],['Cogni / Fera / Varian / Special','Intellia / Bestia / Varius / Spéciaux']];
-  $('lex').innerHTML=X.map(r=>'<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>').join('');
+  const rows=Object.keys(SN).filter(k=>k!=='Autre stat').map(k=>[k,SN[k]]).concat(CATS.map(c=>[c.name,c.en]));
+  $('lex').innerHTML=rows.map(r=>'<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>').join('');
+}
+function applyStatic(){
+  document.documentElement.lang=LANG;
+  document.title=t("Perception d'espèce Sorcier",'Species Perception Sorcerer');
+  document.querySelectorAll('[data-t]').forEach(e=>{const k=e.dataset.t;e.innerHTML=LANG==='en'&&EN_STATIC[k]!=null?EN_STATIC[k]:FR_STATIC[k];});
+  document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===LANG));
+  $('valIn').placeholder=t('11 ou 1,8','11 or 1.8');
+  $('tabs').setAttribute('aria-label',t('Catégories','Families'));
 }
 function form(){renderSlotPick();renderStats();renderRar();renderVerdict();}
 function all(){save(KEY+'-ui',{cat:st.cat.id,slot:st.slot});renderTabs();form();renderLines();renderAuto();renderSum();}
 function select(i){st.slot=i;loadForm();all();}
 
+document.querySelector('.lang').addEventListener('click',e=>{
+  const b=e.target.closest('[data-lang]');if(!b||b.dataset.lang===LANG)return;
+  const raw=parseVal($('valIn').value);
+  LANG=b.dataset.lang;try{localStorage.setItem('perception-lang',LANG)}catch(x){}
+  applyStatic();if(raw!=null)$('valIn').value=fmt(raw,false);
+  $('toast').textContent='';$('ioToast').textContent='';
+  renderLex();all();
+});
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;st.cat=CATS.find(c=>c.id===b.dataset.c);$('toast').textContent='';loadForm();all();});
 $('slotPick').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b)select(+b.dataset.s);});
 $('rarPick').addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(!b)return;st.rar=b.dataset.r;renderRar();});
@@ -562,15 +634,15 @@ $('cost').addEventListener('change',e=>{if(e.target.id!=='crIn')return;CR[st.cat
 $('saveBtn').addEventListener('click',()=>{
   mine()[st.slot]={s:st.stat,v:parseVal($('valIn').value),r:st.rar,lk:$('lkIn').checked};
   save(KEY,prog);
-  $('toast').textContent='Ligne '+st.slot+' de '+st.cat.name+' enregistrée.';
+  $('toast').textContent=t('Ligne '+st.slot+' de '+CN(st.cat)+' enregistrée.',CN(st.cat)+' line '+st.slot+' saved.');
   if(st.slot<9&&!mine()[st.slot+1]){st.slot++;loadForm();}
   all();
 });
-$('clearBtn').addEventListener('click',()=>{delete mine()[st.slot];save(KEY,prog);$('toast').textContent='Ligne '+st.slot+' vidée.';loadForm();all();});
+$('clearBtn').addEventListener('click',()=>{delete mine()[st.slot];save(KEY,prog);$('toast').textContent=t('Ligne '+st.slot+' vidée.','Line '+st.slot+' cleared.');loadForm();all();});
 $('lines').addEventListener('click',e=>{
   const lk=e.target.closest('[data-lk]');
   if(lk){e.stopPropagation();const i=+lk.dataset.lk,l=mine()[i];if(!l)return;l.lk=!l.lk;save(KEY,prog);if(i===st.slot)$('lkIn').checked=l.lk;renderTabs();renderLines();return;}
-  const t=e.target.closest('.line');if(t)select(+t.dataset.s);
+  const tl=e.target.closest('.line');if(tl)select(+tl.dataset.s);
 });
 $('lines').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('line')){e.preventDefault();select(+e.target.dataset.s);}});
 
@@ -584,32 +656,31 @@ function dec(s){
   const ok={};CATS.forEach(c=>{const m=o.d[c.id];if(!m)return;ok[c.id]={};for(let k=1;k<=9;k++){const l=m[k];if(l&&typeof l.s==='string')ok[c.id][k]={s:l.s,v:typeof l.v==='number'?l.v:null,r:RC[l.r]?l.r:'u',lk:!!l.lk};}});
   return ok;
 }
-const io=t=>{$('ioToast').textContent=t;};
-const isFile=location.protocol==='file:';
-if(isFile){$('dlBtn').hidden=false;$('upBtn').hidden=false;}
+const io=x=>{$('ioToast').textContent=x;};
+if(location.protocol==='file:'){$('dlBtn').hidden=false;$('upBtn').hidden=false;}
 $('expBtn').addEventListener('click',()=>{
   const code=enc(prog), out=$('expOut');out.value=code;
-  const fb=()=>{out.hidden=false;out.focus();out.select();io('Copie automatique refusée : le code est sélectionné, fais Ctrl+C.');};
-  try{navigator.clipboard.writeText(code).then(()=>{out.hidden=true;io('Sauvegarde copiée. Colle-la où tu veux pour la garder.');},fb);}catch(e){fb();}
+  const fb=()=>{out.hidden=false;out.focus();out.select();io(t('Copie automatique refusée : le code est sélectionné, fais Ctrl+C.','Automatic copy was blocked: the code is selected, press Ctrl+C.'));};
+  try{navigator.clipboard.writeText(code).then(()=>{out.hidden=true;io(t('Sauvegarde copiée. Colle-la où tu veux pour la garder.','Backup copied. Paste it anywhere to keep it.'));},fb);}catch(e){fb();}
 });
 $('dlBtn').addEventListener('click',()=>{
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([enc(prog)],{type:'text/plain'}));a.download='perception-sauvegarde.txt';document.body.appendChild(a);a.click();a.remove();io('Fichier de sauvegarde téléchargé.');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([enc(prog)],{type:'text/plain'}));a.download='perception-backup.txt';document.body.appendChild(a);a.click();a.remove();io(t('Fichier de sauvegarde téléchargé.','Backup file downloaded.'));
 });
 $('upBtn').addEventListener('click',()=>$('upIn').click());
-$('upIn').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{$('impIn').value=t;$('impBtn').click();});e.target.value='';});
+$('upIn').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;f.text().then(x=>{$('impIn').value=x;$('impBtn').click();});e.target.value='';});
 let pending=null;
 $('impBtn').addEventListener('click',()=>{
-  try{pending=dec($('impIn').value);}catch(e){pending=null;$('impConfirm').hidden=true;io('Ce code n\'est pas une sauvegarde valide. Vérifie qu\'il commence par AION2P: et qu\'il est complet.');return;}
+  try{pending=dec($('impIn').value);}catch(e){pending=null;$('impConfirm').hidden=true;io(t("Ce code n'est pas une sauvegarde valide. Vérifie qu'il commence par AION2P: et qu'il est complet.",'This is not a valid backup code. Check that it starts with AION2P: and is complete.'));return;}
   const n=Object.values(pending).reduce((a,m)=>a+Object.keys(m).length,0);
-  $('impConfirm').hidden=false;io('Sauvegarde lue : '+n+' ligne'+(n>1?'s':'')+' trouvée'+(n>1?'s':'')+'.');
+  $('impConfirm').hidden=false;io(t('Sauvegarde lue : ','Backup read: ')+plural(n,'ligne trouvée','lignes trouvées','line found','lines found')+'.');
 });
-$('impNo').addEventListener('click',()=>{pending=null;$('impConfirm').hidden=true;io('Import annulé.');});
-$('impYes').addEventListener('click',()=>{if(!pending)return;prog=pending;pending=null;save(KEY,prog);$('impConfirm').hidden=true;$('impIn').value='';loadForm();all();io('Sauvegarde importée.');});
+$('impNo').addEventListener('click',()=>{pending=null;$('impConfirm').hidden=true;io(t('Import annulé.','Import cancelled.'));});
+$('impYes').addEventListener('click',()=>{if(!pending)return;prog=pending;pending=null;save(KEY,prog);$('impConfirm').hidden=true;$('impIn').value='';loadForm();all();io(t('Sauvegarde importée.','Backup imported.'));});
 $('resetBtn').addEventListener('click',()=>{$('resetConfirm').hidden=false;});
 $('resetNo').addEventListener('click',()=>{$('resetConfirm').hidden=true;});
-$('resetYes').addEventListener('click',()=>{prog={};save(KEY,prog);$('resetConfirm').hidden=true;loadForm();all();io('Toutes les lignes ont été effacées.');});
+$('resetYes').addEventListener('click',()=>{prog={};save(KEY,prog);$('resetConfirm').hidden=true;loadForm();all();io(t('Toutes les lignes ont été effacées.','All lines have been cleared.'));});
 
-renderLex();loadForm();all();
+applyStatic();renderLex();loadForm();all();
 })();
 </script>
 </body>
