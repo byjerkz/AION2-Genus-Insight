@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perception d'espèce Sorcier</title>
+<title>Perception d'espèce Aion 2</title>
 <meta name="description" content="Aion 2 Species Perception helper for Sorcerer / Outil Perception d'espèce Aion 2 pour Sorcier.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
@@ -173,7 +173,7 @@ footer{color:var(--muted);font-size:12.5px;text-align:center}
   <header>
     <div>
       <h1 data-t="h1">Perception <span>d'espèce</span></h1>
-      <p data-t="tagline">Sorcier niveau 45 · ton écran en jeu, ligne par ligne, avec le verdict de chacune</p>
+      <p data-t="tagline">Ton écran en jeu, ligne par ligne, avec le verdict de chacune</p>
     </div>
     <div class="hright">
       <div class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button></div>
@@ -287,7 +287,7 @@ const t=(fr,en)=>LANG==='en'?en:fr;
 
 const EN_STATIC={
   h1:'Species <span>Perception</span>',
-  tagline:'Sorcerer level 45 · your in-game screen, line by line, with a verdict for each',
+  tagline:'Your in-game screen, line by line, with a verdict for each',
   legend:'<span><i style="background:var(--r-h)"></i>Heroic</span><span><i style="background:var(--r-u)"></i>Unique</span><span><i style="background:var(--r-e)"></i>Epic</span><span><i style="background:var(--r-r)"></i>Rare</span><span><i style="background:var(--r-g)"></i>Common</span><span>· <b class="c-ok">✓</b> lock <b class="c-mid">≈</b> fair <b class="c-no">↻</b> reroll</span>',
   chkH:'Enter a line', chkLede:'Copy the line exactly as it appears in game. The verdict updates as you type.',
   fSlot:'Slot', fStat:'Stat', fColor:'Colour', fVal:'Value', fLocked:'Locked in game',
@@ -604,7 +604,7 @@ function renderLex(){
 }
 function applyStatic(){
   document.documentElement.lang=LANG;
-  document.title=t("Perception d'espèce Sorcier",'Species Perception Sorcerer');
+  document.title=t("Perception d'espèce Aion 2",'Species Perception Aion 2');
   document.querySelectorAll('[data-t]').forEach(e=>{const k=e.dataset.t;e.innerHTML=LANG==='en'&&EN_STATIC[k]!=null?EN_STATIC[k]:FR_STATIC[k];});
   document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===LANG));
   $('valIn').placeholder=t('11 ou 1,8','11 or 1.8');
