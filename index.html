@@ -4,7 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perception d'espèce Aion 2</title>
-<meta name="description" content="Aion 2 Species Perception helper for Sorcerer / Outil Perception d'espèce Aion 2 pour Sorcier.">
+<meta name="description" content="Outil Aion 2 pour optimiser la Perception d'espèce : verdict par ligne, seuils réels du jeu et prix des relances. FR / EN.">
+<meta name="theme-color" content="#c8a76c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AION 2 · Species Perception">
+<meta property="og:title" content="🐾 Perception d'espèce · Species Perception · Aion 2">
+<meta property="og:description" content="Outil Aion 2 pour optimiser la Perception d'espèce : verdict par ligne, seuils réels du jeu et prix des relances. FR / EN.">
+<meta property="og:url" content="https://byjerkz.github.io/AION2-Species-Perception/">
+<meta property="og:image" content="https://byjerkz.github.io/AION2-Species-Perception/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐾%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
 <style>
@@ -287,7 +300,7 @@ footer{color:var(--muted);font-size:12.5px;text-align:center}
     <a href="https://github.com/byjerkz" target="_blank" rel="noopener">👤 <span data-t="lkBy">Créé par byjerkz</span></a>
   </nav>
 
-  <footer data-t="footer">Fourchettes relevées en jeu le 1er novembre 2026. Effets des stats d'après wikily.gg. Priorités d'après un guide communautaire, adaptées au Sorcier. Emblèmes dessinés pour cet outil. Ton suivi est gardé dans ce navigateur uniquement. Outil de fan, non affilié à NCSOFT.</footer>
+  <footer data-t="footer">Fourchettes relevées en jeu le 1er novembre 2026. Effets des stats d'après wikily.gg. Priorités d'après un guide communautaire, pensées pour les classes à distance. Emblèmes dessinés pour cet outil. Ton suivi est gardé dans ce navigateur uniquement. Outil de fan, non affilié à NCSOFT.</footer>
 </div>
 
 <script>
@@ -317,7 +330,7 @@ const EN_STATIC={
   rules:'<li>Each range goes from the minimum Unique (yellow) value to the maximum Heroic (orange) value, recorded in game.</li><li><b>Priority target on an offensive slot</b>: by default, lock from <b>50 %</b> of the range.</li><li><b>Secondary target, or defensive slot</b>: by default, from <b>70 %</b>.</li><li>Anyone can change their standard by dragging the white marker on the verdict gauge. The setting is kept in your browser.</li><li>Up to 20 points under the threshold, the value is "fair": keep it if your budget is tight.</li><li>Every lock raises the cost of all following rerolls. It stays cheap up to 2 locks (11,000 kinah), then climbs fast: 15,000 at 3 locks, 24,000 at 4, 43,000 at 5.</li><li><b>Crit rate is capped at 50 %</b> (lowered by the target\'s Critical Resistance). Until you reach it, Critical Hit ranks above Power Shard. Once at 50 %, tick "CRIT at 50 %" above the 9 lines.</li><li>Other game caps: Evasion 30 %, cooldown reduction 60 %, MP cost reduction 60 %.</li>',
   lexH:'Stat names FR ⇄ EN', lexHint:'English names come from the community guide and may differ slightly from the English game client.',
   lkRepo:'Source code', lkIssue:'Report an issue', lkVer:'v1.0.1 · What\'s new', lkBy:'Made by byjerkz',
-  footer:'Ranges recorded in game on 1 November 2026. Stat effects from wikily.gg. Priorities from a community guide, adapted to the Sorcerer. Emblems drawn for this tool. Your data stays in this browser only. Fan-made tool, not affiliated with NCSOFT.'
+  footer:'Ranges recorded in game on 1 November 2026. Stat effects from wikily.gg. Priorities from a community guide, tuned for ranged classes. Emblems drawn for this tool. Your data stays in this browser only. Fan-made tool, not affiliated with NCSOFT.'
 };
 const FR_STATIC={};
 document.querySelectorAll('[data-t]').forEach(e=>{if(!(e.dataset.t in FR_STATIC))FR_STATIC[e.dataset.t]=e.innerHTML;});
@@ -399,7 +412,7 @@ const NOTES={
   'DGT supplémentaires Éclat de pouvoir':["N°1 du guide une fois le plafond de critique atteint. Pour l'instant CRIT passe devant, mais une bonne valeur reste à garder.","The guide's #1 once your crit cap is reached. For now Critical Hit ranks above it, but a good value is still worth keeping."],
   'CRIT':["Prioritaire tant que ton taux de CRIT n'atteint pas 50 %, le plafond du jeu. Au-delà, chaque point est perdu.","Top priority until your crit rate reaches 50 %, the game's cap. Past that, every point is wasted."],
   'ATQ JcE':['Augmente les dégâts contre tous les monstres. Absente du guide, mais solide en PvE.','Raises damage against all monsters. Not in the guide, but solid in PvE.'],
-  'ATQ contre les boss':['Augmente les dégâts contre les boss seulement. Absente du guide, mais solide pour un Sorcier en donjon.','Raises damage against bosses only. Not in the guide, but solid for a Sorcerer in dungeons.'],
+  'ATQ contre les boss':['Augmente les dégâts contre les boss seulement. Absente du guide, mais solide en donjon.','Raises damage against bosses only. Not in the guide, but solid in dungeons.'],
   'Perforation':['Ignore une partie de la DÉF de la cible.',"Ignores part of the target's Defense."],
   'ATQ CRIT':['Augmente les dégâts de tes coups critiques uniquement.','Raises the damage of your critical hits only.'],
   'Boost de DGT':['Augmente tous tes dégâts. Réduit par la Tolérance aux DGT de la cible.',"Raises all your damage. Reduced by the target's Damage Tolerance."],
@@ -425,9 +438,9 @@ function noteOf(s){
 function reason(stat,cat){
   if(stat==='Autre stat') return t("Elle n'est pas parmi les cibles de cet emplacement.",'Not one of the targets for this slot.');
   if(stat.endsWith(' '+cat.name)) return t('Elle ne marche que contre les monstres '+cat.name+'.','Only works against '+cat.en+' monsters.');
-  if(/fronta|dans le dos/.test(stat)) return t('Positionnelle : en Sorcier à distance, tu ne contrôles pas ton angle.',"Positional: as a ranged Sorcerer, you don't control your angle.");
-  if(/Esquive/.test(stat)) return t("L'Esquive est plafonnée à 30 % et sert peu à un Sorcier à distance.",'Evasion is capped at 30 % and does little for a ranged Sorcerer.');
-  if(/Blocage/.test(stat)) return t('Le Blocage dépend du grade de ton équipement et sert peu à un Sorcier.','Block depends on your gear grade and does little for a Sorcerer.');
+  if(/fronta|dans le dos/.test(stat)) return t('Positionnelle : à distance, tu ne contrôles pas toujours ton angle.',"Positional: at range, you don't always control your angle.");
+  if(/Esquive/.test(stat)) return t("L'Esquive est plafonnée à 30 % et sert peu à une classe à distance.",'Evasion is capped at 30 % and does little for a ranged class.');
+  if(/Blocage/.test(stat)) return t('Le Blocage dépend du grade de ton équipement et sert peu à une classe à distance.','Block depends on your gear grade and does little for a ranged class.');
   if(stat==='PV'||stat==='PM') return t('Une valeur fixe minuscule par rapport à tes PV.','A tiny flat value compared to your HP.');
   return t('Pas une cible pour cet emplacement.','Not a target for this slot.');
 }

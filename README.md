@@ -2,7 +2,9 @@
 
 # 🐾 AION 2 · Species Perception
 
-**Sorcerer helper for Species Perception · Outil Perception d'espèce pour Sorcier**
+**Species Perception helper for every player · Outil de Perception d'espèce pour tous les joueurs**
+
+[![Preview](og-image.png)](https://byjerkz.github.io/AION2-Species-Perception/)
 
 [![Open the tool](https://img.shields.io/badge/▶_Open_the_tool-Ouvrir_l'outil-c8a76c?style=for-the-badge)](https://byjerkz.github.io/AION2-Species-Perception/)
 
@@ -20,7 +22,7 @@
 
 ## 🇬🇧 English
 
-A free tool to optimise **Species Perception** in Aion 2, built for the **Sorcerer**. It covers all five families: 🦉 Cogni · 🐺 Fera · 🌳 Natura · 🌀 Varian · ✨ Special.
+A free tool to optimise **Species Perception** in Aion 2. Priorities are tuned for ranged damage dealers. It covers all five families: 🦉 Cogni · 🐺 Fera · 🌳 Natura · 🌀 Varian · ✨ Special.
 
 ### ✨ Features
 
@@ -51,7 +53,7 @@ A free tool to optimise **Species Perception** in Aion 2, built for the **Sorcer
 
 ## 🇫🇷 Français
 
-Outil gratuit pour optimiser la **Perception d'espèce** d'Aion 2, pensé pour le **Sorcier**. Il couvre les 5 catégories : 🦉 Intellia · 🐺 Bestia · 🌳 Natura · 🌀 Varius · ✨ Spéciaux.
+Outil gratuit pour optimiser la **Perception d'espèce** d'Aion 2. Les priorités sont pensées pour les classes à distance. Il couvre les 5 catégories : 🦉 Intellia · 🐺 Bestia · 🌳 Natura · 🌀 Varius · ✨ Spéciaux.
 
 ### ✨ Fonctionnalités
 
@@ -86,7 +88,7 @@ Outil gratuit pour optimiser la **Perception d'espèce** d'Aion 2, pensé pour l
 ## 📚 Sources
 
 - 📐 Ranges and reroll costs recorded in game, November 2026 · Fourchettes et prix relevés en jeu, novembre 2026
-- 🗺️ Priorities from a community Species Perception guide, adapted to the Sorcerer · Priorités d'après un guide communautaire, adaptées au Sorcier
+- 🗺️ Priorities from a community Species Perception guide, tuned for ranged classes · Priorités d'après un guide communautaire, pensées pour les classes à distance
 - 📖 Stat effects · Effets des stats : [wikily.gg](https://wikily.gg/fr/aion-2/stats)
 
 <div align="center">

@@ -6,6 +6,8 @@
 - 🔗 Barre de liens en bas de page : code source, signaler un problème, nouveautés, créateur · Footer links: source code, report an issue, what's new, author
 
 ### 🔧 Modifications · Changed
+- 🌍 Textes ouverts à toutes les classes, plus de mention du Sorcier · Texts open to every class, no more Sorcerer mention
+- 🖼️ Aperçu de lien (Discord, réseaux) avec image et description à jour · Link preview with image and updated description
 - 🧹 Sous-titre et titre de l'onglet sans « Sorcier niveau 45 » · Subtitle and tab title no longer say "Sorcerer level 45"
 
 ## 🏷️ v1.0.0 · 2026-11-01
