@@ -6,6 +6,8 @@
 
 [![Open the tool](https://img.shields.io/badge/▶_Open_the_tool-Ouvrir_l'outil-c8a76c?style=for-the-badge)](https://byjerkz.github.io/AION2-Species-Perception/)
 
+![Version](https://img.shields.io/github/v/release/byjerkz/AION2-Species-Perception?style=flat-square&label=🏷️%20version&color=c8a76c)
+![License](https://img.shields.io/badge/📄_license-MIT-c8a76c?style=flat-square)
 ![Languages](https://img.shields.io/badge/🌍_FR_|_EN-bilingual-41c4c0?style=flat-square)
 ![No install](https://img.shields.io/badge/💻_no_install-browser_only-243c44?style=flat-square)
 ![Fan made](https://img.shields.io/badge/🎮_fan_made-not_affiliated_with_NCSOFT-555?style=flat-square)
@@ -75,6 +77,11 @@ Outil gratuit pour optimiser la **Perception d'espèce** d'Aion 2, pensé pour l
 > 🔒 Tes données restent dans **ton navigateur**. Rien n'est envoyé nulle part.
 
 ---
+
+## 📜 Changelog · Licence
+
+- 🏷️ Version history · Historique des versions : [CHANGELOG.md](CHANGELOG.md)
+- 📄 [MIT License](LICENSE) · free to use and share · libre d'utilisation et de partage
 
 ## 📚 Sources
 
