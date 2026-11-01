@@ -1,5 +1,13 @@
 # 📜 Changelog
 
+## 🏷️ v1.0.1 · 2026-11-01
+
+### ✨ Nouveautés · Added
+- 🔗 Barre de liens en bas de page : code source, signaler un problème, nouveautés, créateur · Footer links: source code, report an issue, what's new, author
+
+### 🔧 Modifications · Changed
+- 🧹 Sous-titre et titre de l'onglet sans « Sorcier niveau 45 » · Subtitle and tab title no longer say "Sorcerer level 45"
+
 ## 🏷️ v1.0.0 · 2026-11-01
 
 ### ✨ Nouveautés · Added
