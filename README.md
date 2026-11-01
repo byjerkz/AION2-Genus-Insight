@@ -4,7 +4,7 @@
 
 **Species Perception helper for every player · Outil de Perception d'espèce pour tous les joueurs**
 
-[![Preview](og-image.png)](https://byjerkz.github.io/AION2-Species-Perception/)
+[![Aion 2 Species Perception](banner.gif)](https://byjerkz.github.io/AION2-Species-Perception/)
 
 [![Open the tool](https://img.shields.io/badge/▶_Open_the_tool-Ouvrir_l'outil-c8a76c?style=for-the-badge)](https://byjerkz.github.io/AION2-Species-Perception/)
 
