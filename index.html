@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perception d'espèce Aion 2</title>
-<meta name="description" content="Outil Aion 2 pour optimiser la Perception d'espèce : verdict par ligne, seuils réels du jeu et prix des relances. FR / EN.">
+<meta name="description" content="Aion 2 Genus Insight · Perception d'espèce : verdict par ligne, seuils réels du jeu et prix des relances. FR / EN.">
 <meta name="theme-color" content="#c8a76c">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="AION 2 · Species Perception">
-<meta property="og:title" content="🐾 Perception d'espèce · Species Perception · Aion 2">
-<meta property="og:description" content="Outil Aion 2 pour optimiser la Perception d'espèce : verdict par ligne, seuils réels du jeu et prix des relances. FR / EN.">
+<meta property="og:site_name" content="AION 2 · Genus Insight">
+<meta property="og:title" content="🐾 Perception d'espèce · Genus Insight · Aion 2">
+<meta property="og:description" content="Aion 2 Genus Insight · Perception d'espèce : verdict par ligne, seuils réels du jeu et prix des relances. FR / EN.">
 <meta property="og:url" content="https://byjerkz.github.io/AION2-Species-Perception/">
 <meta property="og:image" content="https://byjerkz.github.io/AION2-Species-Perception/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -310,7 +310,7 @@ let LANG=(()=>{try{const v=localStorage.getItem('perception-lang');if(v==='fr'||
 const t=(fr,en)=>LANG==='en'?en:fr;
 
 const EN_STATIC={
-  h1:'Species <span>Perception</span>',
+  h1:'Genus <span>Insight</span>',
   tagline:'Your in-game screen, line by line, with a verdict for each',
   legend:'<span><i style="background:var(--r-h)"></i>Heroic</span><span><i style="background:var(--r-u)"></i>Unique</span><span><i style="background:var(--r-e)"></i>Epic</span><span><i style="background:var(--r-r)"></i>Rare</span><span><i style="background:var(--r-g)"></i>Common</span><span>· <b class="c-ok">✓</b> lock <b class="c-mid">≈</b> fair <b class="c-no">↻</b> reroll</span>',
   chkH:'Enter a line', chkLede:'Copy the line exactly as it appears in game. The verdict updates as you type.',
@@ -569,7 +569,7 @@ const LOCK='<svg viewBox="0 0 20 22"><path d="M5 9V6a5 5 0 0 1 10 0v3" fill="non
 function vdOf(cat,i,l){if(!l||l.v==null)return {c:'none',t:''};const v=judge(cat,i,l.s,l.v);return v.cls==='lock'?{c:'c-ok',t:'✓'}:v.cls==='keep'?{c:'c-mid',t:'≈'}:{c:'c-no',t:'↻'};}
 function renderLines(){
   const m=mine();
-  $('ep-h').textContent=t("Perception d'espèce ",'Species Perception · ')+CN(st.cat);
+  $('ep-h').textContent=t("Perception d'espèce ",'Genus Insight · ')+CN(st.cat);
   const n=Object.keys(m).length, lk=Object.values(m).filter(l=>l.lk).length;
   $('epCount').textContent=n+'/9 '+t('lignes saisies','lines entered')+' · '+plural(lk,'verrou','verrous','lock','locks');
   let h='';
@@ -629,7 +629,7 @@ function renderLex(){
 }
 function applyStatic(){
   document.documentElement.lang=LANG;
-  document.title=t("Perception d'espèce Aion 2",'Species Perception Aion 2');
+  document.title=t("Perception d'espèce Aion 2",'Genus Insight Aion 2');
   document.querySelectorAll('[data-t]').forEach(e=>{const k=e.dataset.t;e.innerHTML=LANG==='en'&&EN_STATIC[k]!=null?EN_STATIC[k]:FR_STATIC[k];});
   document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===LANG));
   $('valIn').placeholder=t('11 ou 1,8','11 or 1.8');

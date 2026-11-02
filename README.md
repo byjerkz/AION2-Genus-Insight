@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🐾 AION 2 · Species Perception
+# 🐾 AION 2 · Genus Insight
 
-**Species Perception helper for every player · Outil de Perception d'espèce pour tous les joueurs**
+**Genus Insight helper for every player · Outil de Perception d'espèce pour tous les joueurs**
 
-[![Aion 2 Species Perception](banner.gif)](https://byjerkz.github.io/AION2-Species-Perception/)
+[![Aion 2 Genus Insight](banner.gif)](https://byjerkz.github.io/AION2-Species-Perception/)
 
 [![Open the tool](https://img.shields.io/badge/▶_Open_the_tool-Ouvrir_l'outil-c8a76c?style=for-the-badge)](https://byjerkz.github.io/AION2-Species-Perception/)
 
@@ -22,7 +22,7 @@
 
 ## 🇬🇧 English
 
-A free tool to optimise **Species Perception** in Aion 2. Priorities are tuned for ranged damage dealers. It covers all five families: 🦉 Cogni · 🐺 Fera · 🌳 Natura · 🌀 Varian · ✨ Special.
+A free tool to optimise **Genus Insight** in Aion 2. Priorities are tuned for ranged damage dealers. It covers all five families: 🦉 Cogni · 🐺 Fera · 🌳 Natura · 🌀 Varian · ✨ Special.
 
 ### ✨ Features
 
@@ -88,7 +88,7 @@ Outil gratuit pour optimiser la **Perception d'espèce** d'Aion 2. Les priorité
 ## 📚 Sources
 
 - 📐 Ranges and reroll costs recorded in game, November 2026 · Fourchettes et prix relevés en jeu, novembre 2026
-- 🗺️ Priorities from a community Species Perception guide, tuned for ranged classes · Priorités d'après un guide communautaire, pensées pour les classes à distance
+- 🗺️ Priorities from a community Genus Insight guide, tuned for ranged classes · Priorités d'après un guide communautaire, pensées pour les classes à distance
 - 📖 Stat effects · Effets des stats : [wikily.gg](https://wikily.gg/fr/aion-2/stats)
 
 <div align="center">
