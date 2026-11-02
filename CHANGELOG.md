@@ -6,6 +6,7 @@
 - 🔗 Barre de liens en bas de page : code source, signaler un problème, nouveautés, créateur · Footer links: source code, report an issue, what's new, author
 
 ### 🔧 Modifications · Changed
+- 🔗 Nouvelle adresse : byjerkz.github.io/AION2-Genus-Insight (l'ancienne redirige) · New address, the old one redirects
 - 🏷️ Nom anglais officiel « Genus Insight » partout · English name now "Genus Insight" everywhere
 - 🌍 Textes ouverts à toutes les classes, plus de mention du Sorcier · Texts open to every class, no more Sorcerer mention
 - 🎞️ Bannière animée dans le README · Animated banner in the README
