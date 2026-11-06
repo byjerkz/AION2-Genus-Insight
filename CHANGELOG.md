@@ -1,5 +1,10 @@
 # 📜 Changelog
 
+## 🏷️ v1.0.2 · 2026-11-06
+
+### ✨ Nouveautés · Added
+- 💰 Lien vers Market Ledger, l'outil de suivi du marché et des crafts · Link to Market Ledger, the market and crafting tracker
+
 ## 🏷️ v1.0.1 · 2026-11-01
 
 ### ✨ Nouveautés · Added
